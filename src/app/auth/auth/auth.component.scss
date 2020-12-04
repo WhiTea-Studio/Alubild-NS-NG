@@ -1,0 +1,22 @@
+@import "../../theme/colors";
+
+.form{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.input-field{
+    width: 80%;
+}
+
+.input{
+    width: 100%;
+}
+
+Button{
+    width: 80%;
+    font-size: 20;
+}
+

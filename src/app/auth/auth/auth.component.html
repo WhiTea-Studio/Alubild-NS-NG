@@ -1,0 +1,20 @@
+<ns-action-bar title=""
+               [showBackButton]="false">
+</ns-action-bar>
+
+<FlexboxLayout  class="form">
+
+  <StackLayout class="input-field w-80">
+    <TextField hint="Korisničko ime" class="input -rounded"></TextField>
+  </StackLayout>
+
+  <StackLayout class="input-field w-80">
+    <TextField hint="Lozinka" class="input -rounded m-t-20"></TextField>
+  </StackLayout>
+
+  <Button class="btn -secondary -rounded-lg p-y-2 m-t-20" text="Prijavi se"
+          nsRouterLink="/main/tabs"
+          [clearHistory]="true"
+          ></Button>
+
+</FlexboxLayout>

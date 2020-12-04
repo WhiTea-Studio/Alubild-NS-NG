@@ -1,0 +1,15 @@
+
+<ns-action-bar title=""
+               [showBackButton]="false">
+</ns-action-bar>
+
+<!-- automatski generisan kod za items -->
+<FlexboxLayout>
+    <ListView [items]="items">
+        <ng-template let-item="item">
+            <StackLayout>
+                <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</FlexboxLayout>

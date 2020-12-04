@@ -1,0 +1,12 @@
+<TabView androidTabsPosition="bottom" androidSelectedTabHighlightColor="#f5f5f5" selectedTabTextColor="#f5f5f5">
+  <!-- name je obavezno -->
+  <StackLayout *tabItem="{title: 'Lista naloga'}">
+    <page-router-outlet  name="items"></page-router-outlet>
+  </StackLayout>
+  <StackLayout *tabItem ="{title: 'Novi nalog'}">
+    <page-router-outlet  name="items2"></page-router-outlet>
+  </StackLayout>
+  <StackLayout *tabItem ="{title: 'Obavestenja'}">
+    <page-router-outlet  name="items3"></page-router-outlet>
+  </StackLayout>
+</TabView>

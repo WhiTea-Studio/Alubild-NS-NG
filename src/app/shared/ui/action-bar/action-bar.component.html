@@ -1,0 +1,6 @@
+<ActionBar [title]="title">
+  <NavigationButton icon="res://alubild" *ngIf="android" m-l-20 m-t-10></NavigationButton>
+  <!-- ZA ios -->
+  <ActionItem ios.position="left" *ngIf="!android"></ActionItem>
+  <ng-content></ng-content>
+</ActionBar>
