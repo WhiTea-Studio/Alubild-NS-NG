@@ -2,7 +2,7 @@ import { NgModule} from "@angular/core";
 import { Routes } from "@angular/router";
 import {NativeScriptRouterModule} from "@nativescript/angular";
 import{MenuTabsComponent} from "./menu-tabs/menu-tabs.component";
-import{ItemsComponent} from "../item/items.component";
+import{ItemsComponent} from "../../item/items.component";
 
 
 const routes: Routes = [

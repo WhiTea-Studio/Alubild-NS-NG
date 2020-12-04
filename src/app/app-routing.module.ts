@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "@nativescript/angular";
 
@@ -8,12 +8,13 @@ const routes: Routes = [
     { path: "", component: AuthComponent},
     {
         path: 'main',
-        loadChildren: () => import('../app/tabs/main-tabs.module').then(m => m.MainTabsModule)
+        loadChildren: () => import('../app/main/tabs/main-tabs.module').then(m => m.MainTabsModule)
     }
 ];
 
 @NgModule({
     imports: [NativeScriptRouterModule.forRoot(routes)],
-    exports: [NativeScriptRouterModule]
+    exports: [NativeScriptRouterModule],
+    schemas:[NO_ERRORS_SCHEMA]
 })
 export class AppRoutingModule { }
