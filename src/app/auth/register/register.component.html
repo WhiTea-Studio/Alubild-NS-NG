@@ -1,0 +1,72 @@
+<StackLayout  class="form m-t-30" [formGroup]="registerForm">
+
+  <Label text="Ime: *"  [ngClass]="{exception: registerForm.get('name').touched && registerForm.get('name').errors}"></Label>
+  <StackLayout class="input-field">
+    <TextField [hint]="registerForm.get('name').untouched || registerForm.get('name').valid ? 'Unesite ime' : 'Morate uneti ime'"
+                class="input -rounded m-t-0"
+                [ngClass]="{exception: registerForm.get('name').touched && registerForm.get('name').errors}"
+                formControlName="name"
+                #nameEl></TextField>
+  </StackLayout>
+  <Label></Label>
+
+  <Label text="Prezime: *"  [ngClass]="{exception: registerForm.get('surname').touched && registerForm.get('surname').errors}"></Label>
+  <StackLayout class="input-field">
+    <TextField [hint]="registerForm.get('surname').untouched || registerForm.get('surname').valid ? 'Unesite prezime' : 'Morate uneti prezime'"
+                class="input -rounded m-t-0"  [ngClass]="{exception: registerForm.get('surname').touched && registerForm.get('surname').errors}"
+                formControlName="surname"></TextField>
+  </StackLayout>
+  <Label></Label>
+
+  <Label text="Email adresa: *"  [ngClass]="{exception: registerForm.get('email').touched && registerForm.get('email').errors}"></Label>
+  <StackLayout class="input-field">
+    <TextField  [hint]="registerForm.get('email').untouched || registerForm.get('email').valid ? 'Unesite mail adresu' : 'Morate uneti email'"
+                class="input -rounded m-t-0"
+                [ngClass]="{exception: registerForm.get('email').touched && registerForm.get('email').errors}"
+                [autocorrect]="false"
+                autocapitalizationType="none"
+                formControlName="email"></TextField>
+  </StackLayout>
+  <Label></Label>
+
+  <Label text="Broj telefona: *" [ngClass]="{exception: registerForm.get('phoneNumber').touched && registerForm.get('phoneNumber').errors}"></Label>
+  <StackLayout class="input-field">
+    <TextField [hint]="registerForm.get('phoneNumber').untouched || registerForm.get('phoneNumber').valid ? 'Unesite broj telefona' : 'Morate uneti broj telefona'"
+                class="input -rounded m-t-0"
+                [ngClass]="{exception: registerForm.get('phoneNumber').touched && registerForm.get('phoneNumber').errors}"
+                formControlName="phoneNumber"></TextField>
+  </StackLayout>
+  <Label></Label>
+
+  <Label text="Korisničko ime: *"  [ngClass]="{exception: registerForm.get('username').touched && registerForm.get('username').errors}"></Label>
+  <StackLayout class="input-field" >
+    <TextField [hint]="registerForm.get('username').untouched || registerForm.get('username').valid ? 'Unesite korisničko ime' : 'Morate uneti korisničko ime'"
+                class="input -rounded m-t-0"
+                [ngClass]="{exception: registerForm.get('username').touched && registerForm.get('username').errors}"
+                formControlName="username"
+                autocapitalizationType="none"
+                #usernameEl></TextField>
+  </StackLayout>
+  <Label></Label>
+
+  <Label text="Lozinka: *" [ngClass]="{exception: registerForm.get('password').touched && registerForm.get('password').errors}"></Label>
+  <StackLayout class="input-field">
+    <TextField [hint]="registerForm.get('password').untouched || registerForm.get('password').valid ? 'Unesite lozinku' : 'Minimum 4 karaktera'"
+              [ngClass]="{exception: registerForm.get('password').touched && registerForm.get('password').errors}"
+               class="input -rounded m-t-0"
+               [autocorrect]="false"
+               autocapitalizationType="none"
+               [secure]="true"
+               formControlName="password"
+               (returnPress)="onDone()"
+               #passwordEl></TextField>
+  </StackLayout>
+  <Label class="exception"></Label>
+
+  <Button class="btn -secondary -rounded-lg p-y-2 m-t-20" text="Registruj se"  *ngIf="!isLoading"
+          (tap)="onSubmit()"
+          [isEnabled]="registerForm.valid"
+          ></Button>
+  <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+
+</StackLayout>

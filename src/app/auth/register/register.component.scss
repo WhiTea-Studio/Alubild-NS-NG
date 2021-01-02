@@ -1,12 +1,5 @@
 @import "../../../theme/colors";
-.page {
-    align-items: center;
-    flex-direction: column;
-    Label{
-        margin-top: 10;
-        margin-bottom: 30;
-    }
-}
+
 .form {
     flex-grow: 1;
     vertical-align: middle;
@@ -14,14 +7,11 @@
         margin-top: 0;
         margin-bottom: 0;
         width: 80%;
-        text-align: center;
+        text-align: left;
+        font-size: 17;
     }
-    .fa{
-        font-size: 40;
-        width:10%;
-    }
-    Label.exception{
-        text-align: right;
+    .input{
+        font-size: 17;
     }
 }
 Button{
@@ -33,10 +23,14 @@ Button{
 }
 Button[isEnabled=false] {
     background-color: $green-light;
-    border-color: $green-light;
 }
 
+Button[isEnabled=false] {
+    border-color: $green-light;
+}
 ActivityIndicator{
     height: 40;
     width: 40;
 }
+
+

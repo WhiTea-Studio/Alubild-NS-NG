@@ -1,11 +1,16 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "@nativescript/angular";
-
+import { NativeScriptFormsModule, NativeScriptModule } from "@nativescript/angular";
 import { AppRoutingModule } from "./app-routing.module";
+import {SharedModule} from "../app/shared/shared.module";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+
 import { AppComponent } from "./app.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import {AuthComponent} from "../app/auth/auth/auth.component";
-import {SharedModule} from "../app/shared/shared.module";
+import {RegisterComponent} from "../app/auth/register/register.component";
+import {AuthService} from "../app/_services/auth.service";
+
 
 @NgModule({
     bootstrap: [
@@ -13,15 +18,21 @@ import {SharedModule} from "../app/shared/shared.module";
     ],
     imports: [
         NativeScriptModule,
+        NativeScriptFormsModule,
+        ReactiveFormsModule,
         AppRoutingModule,
-        SharedModule
+        SharedModule,
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
         ItemDetailComponent,
-        AuthComponent
+        AuthComponent,
+        RegisterComponent
     ],
-    providers: [],
+    providers: [
+        AuthService
+    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

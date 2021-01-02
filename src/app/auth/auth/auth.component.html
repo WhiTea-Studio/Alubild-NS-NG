@@ -2,19 +2,56 @@
                [showBackButton]="false">
 </ns-action-bar>
 
-<FlexboxLayout  class="form">
+<FlexboxLayout class="page">
+  <StackLayout  class="form" [formGroup]="form" *ngIf="isLogin">
 
-  <StackLayout class="input-field w-80">
-    <TextField hint="Korisničko ime"  class="input -rounded"></TextField>
+    <StackLayout class="input-field w-80" orientation="horizontal">
+      <Label text="&#xf007;" class="fa" [ngClass]="{exception: form.get('username').touched && form.get('username').errors}"></Label>
+      <TextField hint="Korisničko ime"
+                  class="input -rounded m-t-0"
+                  formControlName="username"
+                  autocapitalizationType="none"
+                  #usernameEl></TextField>
+    </StackLayout>
+    <Label *ngIf="form.get('username').untouched || form.get('username').valid" class="exception"></Label>
+    <Label class="exception"*ngIf="form.get('username').touched && form.get('username').errors" text="Morate uneti korisničko ime."></Label>
+
+    <StackLayout class="input-field w-80 m-t-20" orientation="horizontal">
+      <Label text="&#xf13e;" class="fa" [ngClass]="{exception: form.get('password').touched && form.get('password').errors}"></Label>
+      <TextField hint="Lozinka"
+                 class="input -rounded m-t-0"
+                 [autocorrect]="false"
+                 autocapitalizationType="none"
+                 [secure]="true"
+                 formControlName="password"
+                 (returnPress)="onDone()"
+                 #passwordEl></TextField>
+    </StackLayout>
+    <Label *ngIf="form.get('password').untouched || form.get('password').valid" class="exception"></Label>
+    <Label class="exception"
+          *ngIf="form.get('password').touched && form.get('password').errors"
+          text="Minimum 4 karaktera."></Label>
+
+    <Button class="btn -secondary -rounded-lg p-y-2 m-t-30" text="Prijavi se"
+            (tap)="onSubmit()"
+            [isEnabled]="form.valid"
+            ></Button>
+    <Label  text="Zaboravili ste lozinku?" class="muted" *ngIf="!isLoading"
+            (tap)="passwordForgotten()"
+            textDecoration="underline"></Label>
+
+            <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
   </StackLayout>
 
-  <StackLayout class="input-field w-80">
-    <TextField hint="Lozinka" class="input -rounded m-t-20"></TextField>
-  </StackLayout>
+  <ns-register *ngIf="!isLogin"></ns-register>
 
-  <Button class="btn -secondary -rounded-lg p-y-2 m-t-20 fa" text="Prijavi se"
-          nsRouterLink="/main/tabs"
-          [clearHistory]="true"
-          ></Button>
+  <FlexboxLayout>
+    <Label [text]="isLogin? 'Nemate kreiran nalog?  ' : 'Već imate nalog?  '" fontSize="15" class="muted"></Label>
+    <Label [text]="isLogin ? 'Registrujte se' : 'Ulogujte se'" color="#48a648"
+            fontWeight="bold"
+            textDecoration="underline"
+            fontSize="15"
+            (tap)="switch()"></Label>
+  </FlexboxLayout>
 
 </FlexboxLayout>
