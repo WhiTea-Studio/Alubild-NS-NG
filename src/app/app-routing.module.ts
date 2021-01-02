@@ -8,7 +8,7 @@ const routes: Routes = [
     { path: "", component: AuthComponent},
     {
         path: 'main',
-        loadChildren: () => import('../app/main/tabs/main-tabs.module').then(m => m.MainTabsModule)
+        loadChildren: () => import('./main/tabs/main-tabs.module').then(m => m.MainTabsModule)
     }
 ];
 

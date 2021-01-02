@@ -3,6 +3,7 @@ import { Routes } from "@angular/router";
 import {NativeScriptRouterModule} from "@nativescript/angular";
 import{MenuTabsComponent} from "./menu-tabs/menu-tabs.component";
 import{ItemsComponent} from "../../item/items.component";
+import { OrderCreatingComponent } from '../order-creating/order-creating.component';
 
 
 const routes: Routes = [
@@ -10,7 +11,7 @@ const routes: Routes = [
             component: MenuTabsComponent,
             children:[
                 {path: 'items', component: ItemsComponent, outlet: 'items'},
-                {path: 'items2', component: ItemsComponent, outlet: 'items2'},
+                {path: 'new-order', component: OrderCreatingComponent, outlet: 'newOrder'},
                 {path: 'items3', component: ItemsComponent, outlet: 'items3'}
             ]},
     // {path: ':mode',

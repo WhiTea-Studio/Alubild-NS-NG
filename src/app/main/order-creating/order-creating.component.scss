@@ -1,0 +1,64 @@
+@import "../../../theme/colors";
+
+.background{
+    background-color: $white;
+    flex-direction: column;
+    padding: 10 10;
+}
+
+
+.err{
+    text-align: left;
+}
+
+
+.label-required{
+    flex-direction: row;
+}
+
+.w-80{
+    width: 80%;
+}
+
+.mx-auto{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.mt-10{
+    margin-top: 10;
+}
+
+.mt-20{
+    margin-top: 20;
+}
+
+.mt-50{
+    margin-top: 50;
+}
+
+.form{
+    CheckBox{
+        color: orangered!important;
+    }
+}
+
+StackLayout.tipologies{
+    // background-color: $gray;
+    
+    Label.h3{
+        color: $muted;
+    }
+
+    border-color: $muted;
+    border-width: 2;
+    border-radius: 15;
+
+    margin-left: 10;
+    margin-right: 10;
+
+    .btn{
+        height: 50;
+    }
+}
+
