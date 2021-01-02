@@ -1,9 +1,10 @@
 <ns-action-bar title="Kreirajte nalog"
                [showBackButton]="true">
 </ns-action-bar>
+<FlexboxLayout class="page">
 
 <StackLayout  class="form" [formGroup]="orderForm">
-    <FlexboxLayout class="label-required mx-auto w-80 mt-50">
+    <FlexboxLayout class="label-required mx-auto mt-50">
       <Label text="Ime klijenta: "  [ngClass]="{exception: orderForm.get('clientsName').touched && orderForm.get('clientsName').errors}"></Label>
       <Label text="*" class="exception"></Label>
     </FlexboxLayout>
@@ -79,4 +80,4 @@
     </ScrollView>
 
   </StackLayout>
-  
+</FlexboxLayout>
