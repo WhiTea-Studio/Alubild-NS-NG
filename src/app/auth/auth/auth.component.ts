@@ -22,6 +22,11 @@ export class AuthComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    // this.authService.autoLogin().subscribe(success =>{
+    //     this.router.navigate(['/main/tabs']);
+    //     console.log(success);
+    //     return;
+    // });
       this.form = new FormGroup({
           username: new FormControl('', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(1)]}),
           password: new FormControl('', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(4)]})
@@ -45,6 +50,7 @@ export class AuthComponent implements OnInit {
     this.user = Object.assign({}, this.form.value);
 
     this.isLoading = true;
+
     this.authService.login(this.user).subscribe(res=>{
         console.log(res);
         this.isLoading = false;

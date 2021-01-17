@@ -11,7 +11,6 @@ import {AuthComponent} from "../app/auth/auth/auth.component";
 import {RegisterComponent} from "../app/auth/register/register.component";
 import {AuthService} from "../app/_services/auth.service";
 
-
 @NgModule({
     bootstrap: [
         AppComponent

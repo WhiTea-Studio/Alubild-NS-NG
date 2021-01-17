@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { RouterExtensions } from "@nativescript/angular";
+import { AuthService } from "../_services/auth.service";
 
 import { Item } from "./item";
 import { ItemService } from "./item.service";
@@ -10,9 +13,14 @@ import { ItemService } from "./item.service";
 export class ItemsComponent implements OnInit {
     items: Array<Item>;
 
-    constructor(private itemService: ItemService) { }
+    constructor(private itemService: ItemService, private authService: AuthService, private router: RouterExtensions) { }
 
     ngOnInit(): void {
         this.items = this.itemService.getItems();
+    }
+
+    Logout(){
+        this.authService.logout();
+        this.router.navigate(['/'], {clearHistory: true});
     }
 }
