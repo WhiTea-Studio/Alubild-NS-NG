@@ -42,7 +42,7 @@ export class AuthService {
                             // const user = new UserModel(resData.email,resData.id,resData.token, new Date());
                             // this.userRes = this.jwtHelper.decodeToken(resData.token);
                             this.userRes = jwt_decode(resData.token);
-                            console.log(this.userRes);
+                            // console.log(this.userRes);
                             this.userRes = resData.user;
                             setString('token', resData.token);
                             setString('user',JSON.stringify(resData.user));

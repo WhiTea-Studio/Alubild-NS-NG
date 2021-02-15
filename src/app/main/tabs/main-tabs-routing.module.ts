@@ -4,13 +4,15 @@ import {NativeScriptRouterModule} from "@nativescript/angular";
 import{MenuTabsComponent} from "./menu-tabs/menu-tabs.component";
 import{ItemsComponent} from "../../item/items.component";
 import { OrderCreatingComponent } from '../order-creating/order-creating.component';
+import { CalendarComponent } from "../calendar/calendar.component";
+import { OrdersResolver } from "../../_resolvers/get-orders.resolver";
 
 
 const routes: Routes = [
     {path: 'tabs',
             component: MenuTabsComponent,
             children:[
-                {path: 'items', component: ItemsComponent, outlet: 'items'},
+                {path: 'orders', component: CalendarComponent, outlet: 'orders', resolve: {orders: OrdersResolver}},
                 {path: 'new-order', component: OrderCreatingComponent, outlet: 'newOrder'},
                 {path: 'items3', component: ItemsComponent, outlet: 'items3'}
             ]},

@@ -23,4 +23,9 @@ export class ItemsComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/'], {clearHistory: true});
     }
+
+    ShowCalendar(){
+        this.router.navigate(['/main/tabs/orders/calendar']);
+    }
+
 }

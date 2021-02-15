@@ -52,7 +52,7 @@ export class AuthComponent implements OnInit {
     this.isLoading = true;
 
     this.authService.login(this.user).subscribe(res=>{
-        console.log(res);
+        // console.log(res);
         this.isLoading = false;
         this.router.navigate(['/main/tabs']);
     }, err =>{
@@ -68,7 +68,7 @@ export class AuthComponent implements OnInit {
   }
 
   passwordForgotten(){
-    console.log('Izmena lozinke');
+    // console.log('Izmena lozinke');
     let options: PromptOptions = {
         title: "Izmena lozinke",
         defaultText: null,

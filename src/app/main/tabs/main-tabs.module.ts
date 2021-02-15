@@ -8,21 +8,31 @@ import {OrderCreatingComponent} from "../order-creating/order-creating.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 import { OrderItemCreatingComponent } from '../order-item-creating/order-item-creating.component';
+import { CalendarComponent } from '../calendar/calendar.component';
+import { OrderService } from '../../_services/order.service';
+import { OrdersResolver } from '../../_resolvers/get-orders.resolver';
+import { CalendarStyleService } from '../../main/calendar/calendar-style';
 
 @NgModule({
     declarations: [
-        MenuTabsComponent, 
+        MenuTabsComponent,
         ItemsComponent,
         OrderCreatingComponent,
-        OrderItemCreatingComponent
+        OrderItemCreatingComponent,
+        CalendarComponent
     ],
     imports: [
-        NativeScriptCommonModule, 
-        MainTabsRoutingModule, 
+        NativeScriptCommonModule,
+        MainTabsRoutingModule,
         SharedModule,
         NativeScriptFormsModule,
         ReactiveFormsModule,
         TNSCheckBoxModule
+    ],
+    providers: [
+        OrderService,
+        CalendarStyleService,
+        OrdersResolver
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

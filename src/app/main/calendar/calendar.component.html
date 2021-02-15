@@ -1,0 +1,27 @@
+<ns-action-bar title="Kalendar 📆"
+               [showBackButton]="true">
+</ns-action-bar>
+<FlexboxLayout  class="page">
+  <RadCalendar
+  [eventSource]="calendarEvents"
+
+  eventsViewMode="Inline"
+  selectionMode="Single"
+  viewMode="Month"
+  transitionMode="Stack"
+  locale="en-US"
+  horizontalTransition="true"
+  [monthViewStyle]="_monthViewStyle"
+  [monthNamesViewStyle]="_monthNamesViewStyle"
+  [datViewStyle]="_dayViewStyle"
+  [yearViewStyle]="_yearViewStyle"
+
+
+  (dateSelected)="onDateSelected($event)"
+  (dateDeselected)="onDateDeselected($event)"
+  (navigatedToDate)="onNavigatedToDate($event)"
+  (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
+  (viewModeChanged)="onViewModeChanged($event)"
+  (inlineEventSelected)="onInlineEventSelected($event)"
+></RadCalendar>
+</FlexboxLayout>
