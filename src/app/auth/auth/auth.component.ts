@@ -23,8 +23,8 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
       this.form = new FormGroup({
-          username: new FormControl('', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(1)]}),
-          password: new FormControl('', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(4)]})
+          username: new FormControl('pera', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(1)]}),
+          password: new FormControl('123456', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(4)]})
       });
   }
 

@@ -14,6 +14,7 @@ export class OrderCreatingComponent implements OnInit {
     phonePattern = '^06[0-9](([0-9]{7})|([0-9]{6}))$';
     pattern = new RegExp(this.phonePattern);
     isTapped = false;
+    isService = false;
 
     constructor(private fb: FormBuilder) {
     }
@@ -42,5 +43,17 @@ export class OrderCreatingComponent implements OnInit {
 
     addTypologyTap(){
       this.isTapped = !this.isTapped;
+    }
+
+    checkBoxChange(){
+      if(this.orderForm.get('service').value === true){
+        this.isService = true;
+      } else {
+        this.isService = false;
+      }
+    }
+
+    closeAddOrderItem(){
+      this.isTapped =  false;
     }
 }

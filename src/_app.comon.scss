@@ -375,3 +375,19 @@ color: $white;
 Label.text-primary{
     color: $green;
 }
+
+
+.p-t-20{
+    padding-top: 20;
+}
+
+.p-t-30{
+    padding-top: 30;
+}
+
+Button.-outline-primary{
+    border-color: $green;
+    border-width: 2;
+    color: $gray;
+    background-color: transparent!important;
+}

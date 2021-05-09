@@ -5,5 +5,6 @@ export interface Typology {
     name: string,
     glass: boolean,
     guide: boolean,
+    tabakera: boolean,
     typologyModels?: TypologyModel[]
 }

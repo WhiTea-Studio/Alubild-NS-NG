@@ -1,64 +1,133 @@
 @import "../../../theme/colors";
 
-.background{
-    background-color: $white;
-    flex-direction: column;
-    padding: 10 10;
+.background {
+  background-color: $white;
+  flex-direction: column;
+  padding: 10 10;
 }
 
+// .w-80{
+//     width: 80%;
+// }
 
-.err{
-    text-align: left;
+// .mx-auto{
+//     margin-left: auto;
+//     margin-right:auto;
+// }
+
+// .mt-10{
+//     margin-top: 10;
+// }
+
+// .mt-20{
+//     margin-top: 20;
+// }
+
+// .mt-50{
+//     margin-top: 50;
+// }
+
+.form {
+  CheckBox {
+    color: orangered !important;
+  }
 }
 
+StackLayout.tipologies {
+  // background-color: $gray;
 
-.label-required{
-    flex-direction: row;
+  Label.h3 {
+    color: $muted;
+  }
+
+  border-color: $muted;
+  border-width: 2;
+  border-radius: 15;
+
+  margin-left: 10;
+  margin-right: 10;
+
+  .btn {
+    height: 50;
+    background-color: $orange!important;
+    border-color: $orange!important;
+  }
 }
 
-.w-80{
+.btn-typology {
+  height: 50;
+  background-color: $orange!important;
+  border-color: $orange!important;
+
+}
+
+.form {
+  flex-grow: 1;
+  vertical-align: middle;
+  Label {
+    margin-top: 0;
+    margin-bottom: 0;
     width: 80%;
-}
+    text-align: left;
+    font-size: 17;
+  }
+  .input {
+    font-size: 17;
+  }
 
-.mx-auto{
-    margin-left: auto;
-    margin-right:auto;
-}
+  Label.check {
+    line-height: 1;
+  }
 
-.mt-10{
-    margin-top: 10;
-}
-
-.mt-20{
-    margin-top: 20;
-}
-
-.mt-50{
-    margin-top: 50;
-}
-
-.form{
-    CheckBox{
-        color: orangered!important;
-    }
-}
-
-StackLayout.tipologies{
-    // background-color: $gray;
-    
-    Label.h3{
-        color: $muted;
-    }
-
-    border-color: $muted;
+  .napomena {
+    border-color: $green;
+    background-color: transparent;
     border-width: 2;
-    border-radius: 15;
-
-    margin-left: 10;
-    margin-right: 10;
-
-    .btn{
-        height: 50;
-    }
+    padding: 5;
+  }
+  TextView{
+    line-height: 2;
+  }
+}
+Button {
+  margin-top: 30;
+  width: 80%;
+  font-size: 18;
+  background-color: $green;
+  border-color: $green;
+}
+Button[isEnabled="false"] {
+  background-color: $green-light;
 }
 
+Button[isEnabled="false"] {
+  border-color: $green-light;
+}
+ActivityIndicator {
+  height: 40;
+  width: 40;
+}
+
+.err {
+  text-align: left;
+}
+
+.label-required {
+  flex-direction: row;
+  width: 80%;
+  font-size: 17;
+}
+
+.label-required {
+  Label {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    margin-left: 5;
+  }
+}
+
+
+.mb20{
+  margin-bottom: 50;
+}
