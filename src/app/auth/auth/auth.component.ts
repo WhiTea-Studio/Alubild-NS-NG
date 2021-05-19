@@ -22,6 +22,11 @@ export class AuthComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    // this.authService.autoLogin().subscribe(success =>{
+    //     this.router.navigate(['/main/tabs']);
+    //     console.log(success);
+    //     return;
+    // });
       this.form = new FormGroup({
           username: new FormControl('pera', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(1)]}),
           password: new FormControl('123456', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(4)]})
@@ -45,8 +50,9 @@ export class AuthComponent implements OnInit {
     this.user = Object.assign({}, this.form.value);
 
     this.isLoading = true;
+
     this.authService.login(this.user).subscribe(res=>{
-        console.log(res);
+        // console.log(res);
         this.isLoading = false;
         this.router.navigate(['/main/tabs']);
     }, err =>{
@@ -62,7 +68,7 @@ export class AuthComponent implements OnInit {
   }
 
   passwordForgotten(){
-    console.log('Izmena lozinke');
+    // console.log('Izmena lozinke');
     let options: PromptOptions = {
         title: "Izmena lozinke",
         defaultText: null,

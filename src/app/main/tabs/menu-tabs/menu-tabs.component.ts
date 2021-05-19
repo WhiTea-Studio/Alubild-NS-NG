@@ -14,7 +14,7 @@ export class MenuTabsComponent implements OnInit {
   constructor(private router: RouterExtensions, private active: ActivatedRoute, private page: Page) { }
 
   ngOnInit() {
-    this.router.navigate([{outlets: {items: ['items'], newOrder: ['new-order'], items3: ['items3']}}],
+    this.router.navigate([{outlets: {orders: ['orders'], newOrder: ['new-order'], items3: ['items3']}}],
     {
       relativeTo: this.active
     });
