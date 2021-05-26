@@ -6,13 +6,14 @@ import{ItemsComponent} from "../../item/items.component";
 import { OrderCreatingComponent } from '../order-creating/order-creating.component';
 import { CalendarComponent } from "../calendar/calendar.component";
 import { OrdersResolver } from "../../_resolvers/get-orders.resolver";
+import { ListOrdersComponent } from "../list-orders/list-orders.component";
 
 
 const routes: Routes = [
     {path: 'tabs',
             component: MenuTabsComponent,
             children:[
-                {path: 'orders', component: CalendarComponent, outlet: 'orders', resolve: {orders: OrdersResolver}},
+                {path: 'orders', component: ListOrdersComponent, outlet: 'orders', resolve: {orders: OrdersResolver}},
                 {path: 'new-order', component: OrderCreatingComponent, outlet: 'newOrder'},
                 {path: 'items3', component: ItemsComponent, outlet: 'items3'}
             ]},

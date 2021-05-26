@@ -1,0 +1,21 @@
+<ns-action-bar title="Lista naloga" [showBackButton]="true">
+</ns-action-bar>
+
+  <FlexboxLayout class="page">
+    <ListView [items]="orders" separatorColor="green">
+      <ng-template let-item="item">
+          <StackLayout>
+            <FlexboxLayout justifyContent="space-between">
+              <Label [nsRouterLink]="['/order', item.id]" [text]='"12.05.2022 | " + item.clientsName +" " + item.clientsSurname'></Label>
+              <FlexboxLayout alignItems="center">
+                <!-- <Label [nsRouterLink]="['/order', item.id]" text='&#xf044;' class="icon"  (tap)="edit(item.id)"></Label> -->
+                <Label text='&#xf044;' class="icon"  (tap)="edit(item.id)"></Label>
+                <Label text='&#xf1f8;' class="icon"  (tap)="delete(item.id)"></Label>
+              </FlexboxLayout>
+          </FlexboxLayout>
+
+          </StackLayout>
+      </ng-template>
+  </ListView>
+  </FlexboxLayout>
+

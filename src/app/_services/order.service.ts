@@ -17,7 +17,7 @@ export class OrderService {
     constructor(private http: HttpClient,
         private router: RouterExtensions) { }
 
-     getAll(page?, itemsPerPage?, orderParams?): Observable<Order[]>{
+     getAll(page?, itemsPerPage?): Observable<Order[]>{
 
         let par = new HttpParams();
 
@@ -28,6 +28,13 @@ export class OrderService {
 
 
         return this.http.get<Order[]>(this.baseUrl + 'user/' + JSON.parse(getString('user')).id, { params: par});
+    }
+
+    delete(id: any){
+        this.http.delete<Order>(this.baseUrl + id).subscribe(() => {
+            return true;
+        });
+        return false;
     }
 
 }

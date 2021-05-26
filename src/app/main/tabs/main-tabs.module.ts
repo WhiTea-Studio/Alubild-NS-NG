@@ -4,7 +4,9 @@ import { ItemsComponent } from "../../item/items.component";
 import { MainTabsRoutingModule } from "./main-tabs-routing.module";
 import { MenuTabsComponent } from "./menu-tabs/menu-tabs.component";
 import { SharedModule } from "../../shared/shared.module";
+
 import {OrderCreatingComponent} from "../order-creating/order-creating.component";
+import {ListOrdersComponent} from "../list-orders/list-orders.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 import { OrderItemCreatingComponent } from '../order-item-creating/order-item-creating.component';
@@ -12,7 +14,6 @@ import { CalendarComponent } from '../calendar/calendar.component';
 import { OrderService } from '../../_services/order.service';
 import { OrdersResolver } from '../../_resolvers/get-orders.resolver';
 import { CalendarStyleService } from '../../main/calendar/calendar-style';
-
 import {CategoryService} from '../_services/category.service';
 import {SeriesService} from '../_services/series.service';
 import {ColorService} from '../_services/color.service';
@@ -32,7 +33,8 @@ import {CategoriesAllResolver} from '../_resolvers/categories-all.resolver';
         ItemsComponent,
         OrderCreatingComponent,
         OrderItemCreatingComponent,
-        CalendarComponent
+        CalendarComponent,
+        ListOrdersComponent
     ],
     imports: [
         NativeScriptCommonModule,

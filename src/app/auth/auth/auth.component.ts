@@ -28,8 +28,8 @@ export class AuthComponent implements OnInit {
     //     return;
     // });
       this.form = new FormGroup({
-          username: new FormControl('pera', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(1)]}),
-          password: new FormControl('123456', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(4)]})
+          username: new FormControl('user', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(1)]}),
+          password: new FormControl('1234', { updateOn: 'blur', validators: [Validators.required, Validators.minLength(4)]})
       });
   }
 

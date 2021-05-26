@@ -1,0 +1,10 @@
+@import "../../../theme/colors";
+Label {
+    font-size: 17;
+  }
+
+Label.icon{
+  color: $success;
+  font-size: 23;
+  margin-right: 10;
+}
