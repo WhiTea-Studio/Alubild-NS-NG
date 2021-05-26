@@ -54,7 +54,7 @@ export class OrderItemCreatingComponent implements OnInit {
   showColorString = false;
   showGlass = false;
 
-  @Output() closeItem = new EventEmitter();
+  @Output() closeItem = new EventEmitter<any>();
 
 
 
@@ -284,7 +284,7 @@ export class OrderItemCreatingComponent implements OnInit {
 
 
   closeItemWindow(){
-    this.closeItem.emit();
+    this.closeItem.emit(null);
   }
 
   addOrderItem(){
@@ -296,7 +296,7 @@ export class OrderItemCreatingComponent implements OnInit {
         height: orderItem.height,
         quantity: orderItem.quantity,
         note: orderItem.note,
-        category: this.categories[orderItem.category].name,
+        category: this.categories[orderItem.category],
         typologyModel: this.typologyModels[orderItem.typologyModel],
         series: this.series[orderItem.series],
         color: this.colors[orderItem.color],
@@ -320,8 +320,11 @@ export class OrderItemCreatingComponent implements OnInit {
       console.log(orderItem);
       console.log();
       console.log(orderItemToCreate);
+      this.closeItem.emit(orderItemToCreate);
     } else{
       console.log("error")
     }
   }
+
+  
 }

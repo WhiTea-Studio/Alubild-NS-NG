@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Application } from '@nativescript/core';
+import Theme from '@nativescript/theme';
 import { AuthService } from "./_services/auth.service";
 
 @Component({
@@ -19,5 +21,13 @@ export class AppComponent implements OnInit {
             }
             this.router.navigate(['/']);
         });
+
+        if(Application.android){
+            try{
+                Theme.setMode(Theme.Light);
+            } catch(e){
+                console.log("Error setting Theme to light mode", e);
+            }
+        }
     }
 }

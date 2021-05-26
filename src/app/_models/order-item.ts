@@ -6,6 +6,7 @@ import { Tabakera } from './tabakera';
 import { GlassQuality } from './glass-quality';
 import { GlassPackage } from './glass-package';
 import { Series } from './series';
+import { Category } from './category';
 
 export interface OrderItem {
     id?:number,
@@ -13,7 +14,7 @@ export interface OrderItem {
     height: number,
     quantity: number,
     note?: string, 
-    category: string,
+    category: Category,
     typologyModel: TypologyModel,
     color?: Color,
     colorString?: string,

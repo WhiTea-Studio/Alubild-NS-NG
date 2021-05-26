@@ -30,4 +30,7 @@ export class OrderService {
         return this.http.get<Order[]>(this.baseUrl + 'user/' + JSON.parse(getString('user')).id, { params: par});
     }
 
+    insert(order: Order): Observable<Order>{
+        return this.http.post<Order>(this.baseUrl, order);
+    }
 }
