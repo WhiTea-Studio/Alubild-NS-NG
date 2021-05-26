@@ -14,5 +14,6 @@ export interface Order {
     price?: number,
     schedulingDate?: Date,
     orderPhotos?: OrderPhoto[],
-    orderItems?: OrderItem[]
+    orderItems?: OrderItem[],
+    userId: number;
 }

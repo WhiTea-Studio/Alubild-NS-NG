@@ -78,9 +78,62 @@
           returnKeyType="done"></TextView>
       </StackLayout>
 
+
+
+      <Label text="Odaberite datum izvođenja radova: " class="mx-auto w-80 m-t-20 m-b-20"
+        [ngClass]="{exception: orderForm.get('schedulingDate').touched && orderForm.get('schedulingDate').errors}"></Label>
+      <StackLayout class="input-field">
+        <DatePicker [minDate]="minDate"
+            verticalAlignment="center">
+        </DatePicker>
+      </StackLayout>
+
+      
+
+      <StackLayout class="order-item-list" *ngIf="!isService && showOrderItemList()">
+          <ScrollView *ngIf="!isService && showOrderItemList()" height="300">
+          <ListView [items]="orderItemList" separatorColor="green" height="300"
+            *ngIf="!isService && showOrderItemList()">
+            <ng-template let-item="item" let-i="index">
+              <FlexboxLayout justifyContent="space-between" class="rad-list-flex">
+                <StackLayout orientation="horizontal">
+                  <Image src="{{item?.typologyModel?.photoUrl}}" class="list-image"></Image>
+                  <StackLayout orientation="vertical">
+                    <Label class="pull-right order-item-text" [text]="item.typologyModel.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="item.color.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="item.quality.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="index"></Label>
+                  </StackLayout>
+                </StackLayout>
+                <FlexboxLayout alignItems="center" class="items-buttons">
+                  <Label (tap)="console.log('edited')" text='&#xf044;' class="icon"></Label>
+                  <Label (tap)="deleteItem(item)" text='&#xf1f8;' class="icon"></Label>
+                </FlexboxLayout>
+              </FlexboxLayout>
+            </ng-template>
+          </ListView>
+        </ScrollView>
+        </StackLayout>
+
+
+
+
+
       <Button text="&#xf055; Dodaj tipologiju" class="btn -secondary -rounded-lg fa m-t-20  btn-typology"
-        (tap)="addTypologyTap()" *ngIf="!isTapped && !isService" ></Button>
-      <ns-order-item-creating *ngIf="isTapped && !isService" class="m-y-20" (closeItem)="closeAddOrderItem()"></ns-order-item-creating>
+        (tap)="addTypologyTap()" *ngIf="!isTapped && !isService"></Button>
+      <ns-order-item-creating *ngIf="isTapped && !isService" class="m-y-20" (closeItem)="closeAddOrderItem($event)">
+      </ns-order-item-creating>
+
+
+
+    <Label class="h-line-separator"></Label>
+
+      <!-- Dugmad -->
+    <FlexboxLayout class="buttons m-t-20 mb20">
+      <Button class="btn -outline-primary -rounded-lg" text="Odustani" (tap)="refresh()"></Button>
+      <Button class="btn -primary -rounded-lg" text="Kreiraj nalog" (tap)="createOrder()" [isEnabled]="orderForm.valid"></Button>
+    </FlexboxLayout>
+    <!-- Dugmad -->
 
     </StackLayout>
   </FlexboxLayout>

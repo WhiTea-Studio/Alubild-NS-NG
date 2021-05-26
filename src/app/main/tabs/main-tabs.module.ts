@@ -26,6 +26,9 @@ import {GuideService} from '../_services/guide.service';
 import {ManufacturerService} from '../_services/manufacturer.service';
 import {TypologyService} from '../_services/typology.service';
 import {CategoriesAllResolver} from '../_resolvers/categories-all.resolver';
+import {AddOrdersPhotosComponent} from '../add-orders-photos/add-orders-photos.component';
+import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
+
 
 @NgModule({
     declarations: [
@@ -34,7 +37,8 @@ import {CategoriesAllResolver} from '../_resolvers/categories-all.resolver';
         OrderCreatingComponent,
         OrderItemCreatingComponent,
         CalendarComponent,
-        ListOrdersComponent
+        ListOrdersComponent,
+        AddOrdersPhotosComponent
     ],
     imports: [
         NativeScriptCommonModule,
@@ -42,7 +46,8 @@ import {CategoriesAllResolver} from '../_resolvers/categories-all.resolver';
         SharedModule,
         NativeScriptFormsModule,
         ReactiveFormsModule,
-        TNSCheckBoxModule
+        TNSCheckBoxModule,
+        NativeScriptUIListViewModule
     ],
     providers: [
         CategoryService,

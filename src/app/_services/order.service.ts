@@ -37,4 +37,7 @@ export class OrderService {
         return false;
     }
 
+    insert(order: Order): Observable<Order>{
+        return this.http.post<Order>(this.baseUrl, order);
+    }
 }
