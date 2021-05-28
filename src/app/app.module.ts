@@ -10,6 +10,7 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import {AuthComponent} from "../app/auth/auth/auth.component";
 import {RegisterComponent} from "../app/auth/register/register.component";
 import {AuthService} from "../app/_services/auth.service";
+import { OrderResolver } from "./_resolvers/get-order.resolver";
 
 @NgModule({
     bootstrap: [
@@ -30,7 +31,8 @@ import {AuthService} from "../app/_services/auth.service";
         RegisterComponent
     ],
     providers: [
-        AuthService
+        AuthService,
+        OrderResolver
     ],
     schemas: [
         NO_ERRORS_SCHEMA

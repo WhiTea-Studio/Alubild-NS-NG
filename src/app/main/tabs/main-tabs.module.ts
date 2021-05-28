@@ -13,6 +13,7 @@ import { OrderItemCreatingComponent } from '../order-item-creating/order-item-cr
 import { CalendarComponent } from '../calendar/calendar.component';
 import { OrderService } from '../../_services/order.service';
 import { OrdersResolver } from '../../_resolvers/get-orders.resolver';
+import { OrderResolver } from '../../_resolvers/get-order.resolver';
 import { CalendarStyleService } from '../../main/calendar/calendar-style';
 import {CategoryService} from '../_services/category.service';
 import {SeriesService} from '../_services/series.service';
@@ -28,6 +29,8 @@ import {TypologyService} from '../_services/typology.service';
 import {CategoriesAllResolver} from '../_resolvers/categories-all.resolver';
 import {AddOrdersPhotosComponent} from '../add-orders-photos/add-orders-photos.component';
 import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
+import {EditOrderComponent} from '../edit-order/edit-order.component';
+import {ViewOrderComponent} from '../view-order/view-order.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
         OrderItemCreatingComponent,
         CalendarComponent,
         ListOrdersComponent,
-        AddOrdersPhotosComponent
+        AddOrdersPhotosComponent,
+        EditOrderComponent,
+        ViewOrderComponent
     ],
     imports: [
         NativeScriptCommonModule,
@@ -64,7 +69,8 @@ import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
         QualityService,
         OrderService,
         CalendarStyleService,
-        OrdersResolver
+        OrdersResolver,
+        OrderResolver
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

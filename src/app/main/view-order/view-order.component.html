@@ -1,0 +1,94 @@
+<ns-action-bar title="Pregled naloga" [showBackButton]="true">
+</ns-action-bar>
+<ScrollView>
+  <FlexboxLayout class="page p-t-30">
+
+
+    <StackLayout class="form">
+      <FlexboxLayout class="label-required mx-auto w-80">
+        <Label text="Ime klijenta: "></Label>
+      </FlexboxLayout>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" [text]="order.clientsName" editable="false"
+          returnKeyType="next"></TextField>
+      </StackLayout>
+
+      <FlexboxLayout class="label-required mx-auto w-80 mt-20">
+        <Label text="Prezime klijenta: "></Label>
+      </FlexboxLayout>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" [text]="order.clientsSurname" editable="false"></TextField>
+      </StackLayout>
+
+      <Label text="Email adresa klijenta:" class="mx-auto w-80 m-t-20"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" [autocorrect]="false" [text]="order.clientsEmail" editable="false" keyboardType="email">
+        </TextField>
+      </StackLayout>
+
+      <Label text="Broj telefona klijenta:" class="mx-auto w-80 m-t-20"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" [text]="order.clientsPhoneNumber" editable="false" keyboardType="phone"></TextField>
+      </StackLayout>
+
+      <FlexboxLayout class="label-required mx-auto w-80 m-t-20">
+        <Label text="Adresa klijenta:"></Label>
+      </FlexboxLayout>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" [text]="order.clientsAdress" editable="false"></TextField>
+      </StackLayout>
+
+      <!-- staviti da je opcioni teskt ako je order.service - da pise ZA SERVIS u label, a ako je false - NIJE ZA POTREBE SERVISA -->
+      <Label text="Da li je nalog kreiran za servisiranje: " textWrap="true"
+        class="mx-auto w-80 m-t-20 check"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" text="Da" editable="false" *ngIf="order.service"></TextField>
+        <TextField class="input -rounded m-t-0"  text="Ne" editable="false" *ngIf="!order.service"></TextField>
+      </StackLayout>
+
+      <Label text="Vaša napomena: " class="mx-auto w-80 m-t-20 m-b-20"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextView hint="Unesite svoju napomenu" class="input -rounded m-t-0 napomena" [text]="order.note" editable="false"></TextView>
+      </StackLayout>
+
+
+
+      <Label text="Datum izvođenja radova: " class="mx-auto w-80 m-t-20 m-b-20"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextField class="input -rounded m-t-0" [text]="getDate(order.schedulingDate)" editable="false" *ngIf="order.schedulingDate !== null"></TextField>
+        <TextField class="input -rounded m-t-0" text="Nije definisan" editable="false" *ngIf="order.schedulingDate === null"></TextField>
+      </StackLayout>
+
+
+
+      <Label text="Stavke naloga: " class="w-80 m-t-20 m-b-20" *ngIf="!order.service"></Label>
+      <StackLayout class="order-item-list" *ngIf="!order.service">
+          <ScrollView *ngIf="!order.service" height="300">
+          <ListView [items]="order.orderItems" separatorColor="green" height="300"
+            *ngIf="!order.service">
+            <ng-template let-item="item" let-i="index">
+              <FlexboxLayout justifyContent="space-between" class="rad-list-flex">
+                <StackLayout orientation="horizontal">
+                  <Image src="{{item?.typologyModel?.photoUrl}}" class="list-image"></Image>
+                  <StackLayout orientation="vertical">
+                    <Label class="pull-right order-item-text" [text]="item.typologyModel.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="item.color.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="item.quality.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="index"></Label>
+                  </StackLayout>
+                </StackLayout>
+              </FlexboxLayout>
+            </ng-template>
+          </ListView>
+        </ScrollView>
+        </StackLayout>
+
+      <!-- Dugmad -->
+    <FlexboxLayout class="buttons m-b-20 " alignItems="center" justifyContent = "center">
+      <Button class="btn -primary -rounded-lg" text="Nazad na listu" (tap)="back()"></Button>
+    </FlexboxLayout>
+    <!-- Dugmad -->
+
+    </StackLayout>
+  </FlexboxLayout>
+</ScrollView>

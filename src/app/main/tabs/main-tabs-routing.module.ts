@@ -7,6 +7,7 @@ import { OrderCreatingComponent } from '../order-creating/order-creating.compone
 import { OrdersResolver } from "../../_resolvers/get-orders.resolver";
 import { ListOrdersComponent } from "../list-orders/list-orders.component";
 import { AddOrdersPhotosComponent } from '../add-orders-photos/add-orders-photos.component';
+import { ItemDetailComponent } from "../../item/item-detail.component";
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
             children:[
                 {path: 'orders', component: ListOrdersComponent, outlet: 'orders', resolve: {orders: OrdersResolver}},
                 {path: 'new-order', component: OrderCreatingComponent, outlet: 'newOrder'},
-                {path: 'items3', component: ItemsComponent, outlet: 'items3'}
+                {path: 'items3', component: ItemDetailComponent, outlet: 'items3'}
             ]},
     {path: 'add-orders-photos', component: AddOrdersPhotosComponent},
     // {path: ':mode',

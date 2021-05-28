@@ -1,9 +1,20 @@
 
-
-<FlexboxLayout flexDirection="column">
-    <FlexboxLayout class="m-15">
-        <Label class="h2" [text]="item.id + '. '"></Label>
-        <Label class="h2" [text]="item.name"></Label>
+<ns-action-bar title="Profil korisnika"
+[showBackButton]="false">
+</ns-action-bar>
+<FlexboxLayout class="page">
+    <StackLayout  class="form">
+        <Label text="Ime: Teodora"></Label>
+        <Label class="h-line-separator"></Label>
+        <Label text="Prezime: Acimov" class="m-t-20"></Label>
+        <Label class="h-line-separator"></Label>
+        <Label text="Email: teodora.acimov@gmail.com" class="m-t-20"></Label>
+        <Label class="h-line-separator"></Label>
+        <Label text="Kontakt telefon: 0631524415" class="m-t-20"></Label>
+        <Label class="h-line-separator"></Label>
+    </StackLayout>
+    <FlexboxLayout class="page">
+        <Button class="btn -secondary -rounded-lg p-y-2 m-t-30" text="Odjavi se" (tap)="Logout()"></Button>
     </FlexboxLayout>
-    <Label class="h4 m-15" [text]="item.role"></Label>
 </FlexboxLayout>
+

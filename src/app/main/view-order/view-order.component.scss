@@ -1,0 +1,173 @@
+@import "../../../theme/colors";
+
+.background {
+  background-color: $white;
+  flex-direction: column;
+  padding: 10 10;
+}
+
+// .w-80{
+//     width: 80%;
+// }
+
+// .mx-auto{
+//     margin-left: auto;
+//     margin-right:auto;
+// }
+
+// .mt-10{
+//     margin-top: 10;
+// }
+
+// .mt-20{
+//     margin-top: 20;
+// }
+
+// .mt-50{
+//     margin-top: 50;
+// }
+
+.form {
+  CheckBox {
+    color: orangered !important;
+  }
+}
+
+StackLayout.tipologies {
+  // background-color: $gray;
+
+  Label.h3 {
+    color: $muted;
+  }
+
+  border-color: $muted;
+  border-width: 2;
+  border-radius: 15;
+
+  margin-left: 10;
+  margin-right: 10;
+
+  .btn {
+    height: 50;
+    background-color: $orange-light !important;
+    border-color: $orange-light !important;
+  }
+}
+
+.btn-typology {
+  height: 50;
+  background-color: $orange-light !important;
+  border-color: $orange-light !important;
+}
+
+.form {
+  flex-grow: 1;
+  vertical-align: middle;
+  Label {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 80%;
+    text-align: left;
+    font-size: 17;
+  }
+  .input {
+    font-size: 17;
+  }
+
+  Label.check {
+    line-height: 1;
+  }
+
+  .napomena {
+    border-color: $green;
+    background-color: transparent;
+    border-width: 2;
+    padding: 5;
+  }
+  TextView {
+    line-height: 2;
+  }
+}
+Button {
+  margin-top: 30;
+  width: 80%;
+  font-size: 18;
+  background-color: $green;
+  border-color: $green;
+}
+Button[isEnabled="false"] {
+  background-color: $green-light;
+  border-color: $green-light;
+}
+
+ActivityIndicator {
+  height: 40;
+  width: 40;
+}
+
+.err {
+  text-align: left;
+}
+
+.label-required {
+  flex-direction: row;
+  width: 80%;
+  font-size: 17;
+}
+
+.label-required {
+  Label {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    margin-left: 5;
+  }
+}
+
+.mb20 {
+  margin-bottom: 50;
+}
+
+.order-item-list {
+  width: 99%;
+  align-self: center;
+  // min-height: 50;
+  margin: 15 auto;
+
+  Image.list-image {
+    height: 70;
+    width: auto;
+  }
+
+  .rad-list-flex {
+    justify-content: space-between;
+    flex-direction: row;
+    // height: 150;
+    // background-color: #777777;
+  }
+
+  .order-item-text {
+    font-size: 12;
+    margin: 0;
+    padding: 1;
+  }
+
+  .items-buttons{
+    width: 22%;
+  }
+}
+
+Button{
+  width: 80%;
+  margin-bottom: 30;
+  height: auto;
+}
+
+
+.h-line-separator{
+  font-size: 19;
+  padding: 5 18;
+  border-color: $green;
+  border-width: 0 0 1 0;
+  border-style: dotted;
+}

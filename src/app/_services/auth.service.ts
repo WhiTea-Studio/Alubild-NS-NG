@@ -67,7 +67,7 @@ export class AuthService {
                     // this._user.next(this.userRes.user);
                     setString('token', resData.token);
                     setString('user',JSON.stringify(resData.user));
-                    this.autoLogout(this.timeToExpiery(getString('token')));
+                    // this.autoLogout(this.timeToExpiery(getString('token')));
                     // console.log(getString('token'));
                 } else{
                     console.log('greska u if auth login');

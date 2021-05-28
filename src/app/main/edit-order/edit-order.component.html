@@ -1,0 +1,140 @@
+<ns-action-bar title="Izmenite nalog" [showBackButton]="true">
+</ns-action-bar>
+<ScrollView>
+  <FlexboxLayout class="page p-t-30">
+
+
+    <StackLayout class="form" [formGroup]="orderForm">
+      <FlexboxLayout class="label-required mx-auto w-80">
+        <Label text="Ime klijenta: "
+          [ngClass]="{exception: orderForm.get('clientsName').touched && orderForm.get('clientsName').errors}"></Label>
+        <Label text="*" class="exception"></Label>
+      </FlexboxLayout>
+      <StackLayout class="input-field m-b-20">
+        <TextField hint="Unesite ime klijenta" class="input -rounded m-t-0" formControlName="clientsName"
+          returnKeyType="next"></TextField>
+        <Label class="exception err" *ngIf="orderForm.get('clientsName').touched && orderForm.get('clientsName').errors"
+          text="Morate uneti ime."></Label>
+      </StackLayout>
+
+      <FlexboxLayout class="label-required mx-auto w-80 mt-20">
+        <Label text="Prezime klijenta: "
+          [ngClass]="{exception: orderForm.get('clientsSurname').touched && orderForm.get('clientsSurname').errors}"></Label>
+        <Label text="*" class="exception"></Label>
+      </FlexboxLayout>
+      <StackLayout class="input-field m-b-20">
+        <TextField hint="Unesite prezime klijenta" class="input -rounded m-t-0" formControlName="clientsSurname"
+          returnKeyType="next"></TextField>
+        <Label class="exception"
+          *ngIf="orderForm.get('clientsSurname').touched && orderForm.get('clientsSurname').errors"
+          text="Morate uneti prezime."></Label>
+      </StackLayout>
+
+      <Label text="Email adresa klijenta:" class="mx-auto w-80 m-t-20"
+        [ngClass]="{exception: orderForm.get('clientsEmail').touched &&  orderForm.get('clientsEmail').errors}"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextField hint="Unesite email adresu" class="input -rounded m-t-0" [autocorrect]="false"
+          autocapitalizationType="none" formControlName="clientsEmail" returnKeyType="next" keyboardType="email">
+        </TextField>
+        <Label class="exception" *ngIf="orderForm.get('clientsEmail').touched && orderForm.get('clientsEmail').errors"
+          text="Nevalidan unos."></Label>
+      </StackLayout>
+
+      <Label text="Broj telefona klijenta:" class="mx-auto w-80 m-t-20"
+        [ngClass]="{exception: orderForm.get('clientsPhoneNumber').touched && orderForm.get('clientsPhoneNumber').errors}"></Label>
+      <StackLayout class="input-field m-b-20">
+        <TextField hint="Format: 0601234567" class="input -rounded m-t-0" formControlName="clientsPhoneNumber"
+          returnKeyType="next" keyboardType="phone"></TextField>
+        <Label class="exception"
+          *ngIf="orderForm.get('clientsPhoneNumber').touched && orderForm.get('clientsPhoneNumber').errors"
+          text="Nevalidan unos."></Label>
+      </StackLayout>
+
+      <FlexboxLayout class="label-required mx-auto w-80 m-t-20">
+        <Label text="Adresa klijenta:"
+          [ngClass]="{exception: orderForm.get('clientsAdress').touched && orderForm.get('clientsAdress').errors}"></Label>
+        <Label text="*" class="exception"></Label>
+      </FlexboxLayout>
+      <StackLayout class="input-field m-b-20">
+        <TextField hint="Unesite adresu klijenta" class="input -rounded m-t-0" formControlName="clientsAdress"
+          returnKeyType="next"></TextField>
+        <Label class="exception"
+          *ngIf=" orderForm.get('clientsAdress').touched && orderForm.get('clientsAdress').errors"
+          text="Morate uneti adresu klijenta."></Label>
+      </StackLayout>
+
+      <Label text="Čekirajte opciju servis ukoliko je kreiran nalog za servis: " textWrap="true"
+        class="mx-auto w-80 m-t-20 check"
+        [ngClass]="{exception: orderForm.get('service').touched && orderForm.get('service').errors}"></Label>
+      <StackLayout class="input-field m-b-20">
+        <CheckBox text="Servis" formControlName="service" fillColor="#48a648" color="#767676"
+          class="input -rounded m-t-0" (ngModelChange)="checkBoxChange()"></CheckBox>
+      </StackLayout>
+
+      <Label text="Vaša napomena: " class="mx-auto w-80 m-t-20 m-b-20"
+        [ngClass]="{exception: orderForm.get('note').touched && orderForm.get('note').errors}"></Label>
+      <StackLayout class="input-field">
+        <TextView hint="Unesite svoju napomenu" class="input -rounded m-t-0 napomena" formControlName="note"
+          returnKeyType="done"></TextView>
+      </StackLayout>
+
+
+
+      <Label text="Odaberite datum izvođenja radova: " class="mx-auto w-80 m-t-20 m-b-20"
+        [ngClass]="{exception: orderForm.get('schedulingDate').touched && orderForm.get('schedulingDate').errors}"></Label>
+      <StackLayout class="input-field">
+        <DatePicker [minDate]="minDate" formControlName="schedulingDate"
+            verticalAlignment="center">
+        </DatePicker>
+      </StackLayout>
+
+
+
+      <StackLayout class="order-item-list" *ngIf="!isService && showOrderItemList()">
+          <ScrollView *ngIf="!isService && showOrderItemList()" height="300">
+          <ListView [items]="orderItemList" separatorColor="green" height="300"
+            *ngIf="!isService && showOrderItemList()">
+            <ng-template let-item="item" let-i="index">
+              <FlexboxLayout justifyContent="space-between" class="rad-list-flex">
+                <StackLayout orientation="horizontal">
+                  <Image src="{{item?.typologyModel?.photoUrl}}" class="list-image"></Image>
+                  <StackLayout orientation="vertical">
+                    <Label class="pull-right order-item-text" [text]="item.typologyModel.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="item.color.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="item.quality.name"></Label>
+                    <Label class="pull-right order-item-text" [text]="index"></Label>
+                  </StackLayout>
+                </StackLayout>
+                <FlexboxLayout alignItems="center" class="items-buttons">
+                  <Label (tap)="console.log('edited')" text='&#xf044;' class="icon"></Label>
+                  <Label (tap)="deleteItem(item)" text='&#xf1f8;' class="icon"></Label>
+                </FlexboxLayout>
+              </FlexboxLayout>
+            </ng-template>
+          </ListView>
+        </ScrollView>
+        </StackLayout>
+
+
+
+
+<!--
+      <Button text="&#xf055; Dodaj tipologiju" class="btn -secondary -rounded-lg fa m-t-20  btn-typology"
+        (tap)="addTypologyTap()" *ngIf="!isTapped && !isService"></Button>
+      <ns-order-item-creating *ngIf="isTapped && !isService" class="m-y-20" (closeItem)="closeAddOrderItem($event)">
+      </ns-order-item-creating> -->
+
+
+
+    <Label class="h-line-separator"></Label>
+
+      <!-- Dugmad -->
+    <FlexboxLayout class="buttons m-t-20 mb20">
+      <Button class="btn -outline-primary -rounded-lg" text="Odustani" (tap)="back()"></Button>
+      <Button class="btn -primary -rounded-lg" text="Izmeni nalog" (tap)="editOrder()" [isEnabled]="orderForm.valid"></Button>
+    </FlexboxLayout>
+    <!-- Dugmad -->
+
+    </StackLayout>
+  </FlexboxLayout>
+</ScrollView>

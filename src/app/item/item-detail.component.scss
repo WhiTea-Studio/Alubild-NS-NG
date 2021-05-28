@@ -1,0 +1,33 @@
+@import "../../theme/colors";
+.page {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+Button{
+    font-size: 18;
+    width: 80%;
+    background-color: $orange;
+    border-color: $orange;
+    margin-bottom: 30;
+}
+
+.form {
+    flex-grow: 1;
+    // vertical-align: middle;
+    margin-top: 60;
+    Label{
+        width: 90%;
+        text-align: left;
+        font-size: 17;
+        color: $gray;
+    }
+}
+
+.h-line-separator{
+    font-size: 19;
+    border-color: $green;
+    border-width: 0 0 1 0;
+    border-style: dotted;
+  }

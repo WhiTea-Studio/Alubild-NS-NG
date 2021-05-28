@@ -30,14 +30,19 @@ export class OrderService {
         return this.http.get<Order[]>(this.baseUrl + 'user/' + JSON.parse(getString('user')).id, { params: par});
     }
 
-    delete(id: any){
-        this.http.delete<Order>(this.baseUrl + id).subscribe(() => {
-            return true;
-        });
-        return false;
+    get(id: any): Observable<Order>{
+        return this.http.get<Order>(this.baseUrl + id);
+    };
+
+    delete(id: any): Observable<any>{
+        return this.http.delete<any>(this.baseUrl + id);
     }
 
     insert(order: Order): Observable<Order>{
         return this.http.post<Order>(this.baseUrl, order);
+    }
+
+    edit(order: Order): Observable<Order>{
+        return this.http.put<Order>(this.baseUrl + order.id, order);
     }
 }
