@@ -96,6 +96,7 @@ export class OrderCreatingComponent implements OnInit {
     }
 
     deleteItem(item: OrderItem){
+        (<FormArray>this.orderForm.controls.orderItems).removeAt(this.orderItemList.indexOf(item));
         this.orderItemList = this.orderItemList.filter(x => x !== item);
     }
 

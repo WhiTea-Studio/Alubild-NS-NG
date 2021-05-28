@@ -27,7 +27,7 @@ import {TypologyService} from '../_services/typology.service';
 import {CategoriesAllResolver} from '../_resolvers/categories-all.resolver';
 import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
 import {AddOrdersPhotosComponent} from '../add-orders-photos/add-orders-photos.component';
-
+import {OrderPhotoService} from '../_services/order-photo.service';
 
 @NgModule({
     declarations: [
@@ -62,7 +62,8 @@ import {AddOrdersPhotosComponent} from '../add-orders-photos/add-orders-photos.c
         QualityService,
         OrderService,
         CalendarStyleService,
-        OrdersResolver
+        OrdersResolver,
+        OrderPhotoService
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

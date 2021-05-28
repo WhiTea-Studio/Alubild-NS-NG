@@ -317,9 +317,9 @@ export class OrderItemCreatingComponent implements OnInit {
       orderItemToCreate.insert = true;
 
 
-      console.log(orderItem);
-      console.log();
-      console.log(orderItemToCreate);
+      // console.log(orderItem);
+      // console.log();
+      // console.log(orderItemToCreate);
       this.closeItem.emit(orderItemToCreate);
     } else{
       console.log("error")
