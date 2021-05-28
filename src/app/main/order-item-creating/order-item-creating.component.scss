@@ -120,8 +120,8 @@ Button {
   margin-top: 30;
   width: 80%;
   font-size: 18;
-  background-color: $orange-light;
-  border-color: $orange-light;
+  background-color: $orange;
+  border-color: $orange;
 }
 Button[isEnabled="false"] {
   background-color: $green-light;
@@ -159,7 +159,7 @@ ActivityIndicator {
 }
 
 Button.-outline-primary{
-  border-color: $orange-light;
+  border-color: $orange;
   border-width: 2;
   color: $gray;
   background-color: $white!important;

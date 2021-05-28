@@ -55,16 +55,24 @@ export class AuthComponent implements OnInit {
         // console.log(res);
         this.isLoading = false;
         this.router.navigate(['/main/tabs']);
+        this.form.markAsPristine();
     }, err =>{
         console.log(err);
         this.isLoading = false;
+        this.form.markAsPristine();
     });
+    this.form.markAsPristine();
     this.reset();
+    this.form.markAsPristine();
   }
 
   reset(){
     this.usernameEl.nativeElement.focus();
-    this.form.reset();
+    this.form.markAsUntouched();
+    this.form.markAsPristine();
+    this.form.reset(); 
+    this.form.markAsUntouched();
+    this.form.markAsPristine();
   }
 
   passwordForgotten(){
