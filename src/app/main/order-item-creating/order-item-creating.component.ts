@@ -92,8 +92,8 @@ export class OrderItemCreatingComponent implements OnInit {
       typology: [0, Validators.required],
       typologyModel:[0, Validators.required],
       width: [0, {validators: [Validators.required], updateOn: "blur"}],
-      height: [0, {validators: [Validators.required], updateOn: "blur"}], 
-      quantity: [0, {validators: [Validators.required], updateOn: "blur"}], 
+      height: [0, {validators: [Validators.required], updateOn: "blur"}],
+      quantity: [0, {validators: [Validators.required], updateOn: "blur"}],
       manufacturer: [0, Validators.required],
       series: [0, Validators.required],
       note: [""],
@@ -206,7 +206,7 @@ export class OrderItemCreatingComponent implements OnInit {
       });
     }
 
-    
+
   }
 
   onSelectedManufacturerChanged(args: EventData){
@@ -290,7 +290,7 @@ export class OrderItemCreatingComponent implements OnInit {
   addOrderItem(){
     if(this.orderItemForm.valid){
       let orderItem = Object.assign({}, this.orderItemForm.value);
-      
+
       const orderItemToCreate: OrderItem = {
         width: orderItem.width,
         height: orderItem.height,
@@ -313,7 +313,7 @@ export class OrderItemCreatingComponent implements OnInit {
         orderItemToCreate.glassPackage = this.glassPackages[orderItem.glassPackage];
         orderItemToCreate.glassQuality = this.glassQualities[orderItem.glassQuality];
       }
-      
+
       orderItemToCreate.insert = true;
 
 
@@ -326,5 +326,5 @@ export class OrderItemCreatingComponent implements OnInit {
     }
   }
 
-  
+
 }

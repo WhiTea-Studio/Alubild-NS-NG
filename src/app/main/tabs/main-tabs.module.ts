@@ -32,6 +32,8 @@ import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
 import {EditOrderComponent} from '../edit-order/edit-order.component';
 import {ViewOrderComponent} from '../view-order/view-order.component';
 import {OrderPhotoService} from '../_services/order-photo.service';
+import { UserInfoResolver } from '../../_resolvers/get-user-info.resolver';
+import {OrderItemEditingComponent} from "../order-item-editing/order-item-editing.component";
 
 @NgModule({
     declarations: [
@@ -43,7 +45,8 @@ import {OrderPhotoService} from '../_services/order-photo.service';
         ListOrdersComponent,
         AddOrdersPhotosComponent,
         EditOrderComponent,
-        ViewOrderComponent
+        ViewOrderComponent,
+        OrderItemEditingComponent
     ],
     imports: [
         NativeScriptCommonModule,
@@ -71,7 +74,8 @@ import {OrderPhotoService} from '../_services/order-photo.service';
         CalendarStyleService,
         OrdersResolver,
         OrderResolver,
-        OrderPhotoService
+        OrderPhotoService,
+        UserInfoResolver
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

@@ -49,15 +49,16 @@ StackLayout.tipologies {
 
   .btn {
     height: 50;
-    background-color: $orange-light !important;
-    border-color: $orange-light !important;
+    background-color: $orange!important;
+    border-color: $orange!important;
   }
 }
 
 .btn-typology {
   height: 50;
-  background-color: $orange-light !important;
-  border-color: $orange-light !important;
+  background-color: $orange!important;
+  border-color: $orange!important;
+
 }
 
 .form {
@@ -84,20 +85,46 @@ StackLayout.tipologies {
     border-width: 2;
     padding: 5;
   }
-  TextView {
+
+  TextView{
     line-height: 2;
   }
+
+
+  Label.notfound{
+    text-align: left;
+    font-size: 19;
+    width: 100%;
+    line-height: 1;
+  }
+
+  Label.notfound.fa{
+    text-align: center;
+    font-size: 25;
+  }
+
+  FlexboxLayout.side-checker{
+    justify-content: space-between;
+    width: 80%;
+
+    Checkbox{
+      width: auto;
+      padding-right: 0;
+    }
+
+  }
+
+
 }
 Button {
   margin-top: 30;
   width: 80%;
   font-size: 18;
-  background-color: $green;
-  border-color: $green;
+  background-color: $orange-light;
+  border-color: $orange-light;
 }
 Button[isEnabled="false"] {
   background-color: $green-light;
-  border-color: $green-light;
 }
 
 ActivityIndicator {
@@ -108,6 +135,8 @@ ActivityIndicator {
 .err {
   text-align: left;
 }
+
+
 
 .label-required {
   flex-direction: row;
@@ -124,67 +153,20 @@ ActivityIndicator {
   }
 }
 
-.mb20 {
+
+.mb20{
   margin-bottom: 50;
 }
 
-.order-item-list {
-  width: 99%;
-  align-self: center;
-  // min-height: 50;
-  margin: 15 auto;
-
-  Image.list-image {
-    height: 70;
-    width: auto;
-  }
-
-  .rad-list-flex {
-    justify-content: space-between;
-    flex-direction: row;
-    // height: 150;
-    // background-color: #777777;
-  }
-
-  .order-item-text {
-    font-size: 12;
-    margin: 0;
-    padding: 1;
-  }
-
-  .items-buttons{
-    width: 22%;
-  }
+Button.-outline-primary{
+  border-color: $orange-light;
+  border-width: 2;
+  color: $gray;
+  background-color: $white!important;
 }
 
-Button{
-  width: 80%;
-  margin-bottom: 30;
-  height: auto;
-}
-
-
-.h-line-separator{
-  font-size: 19;
-  padding: 5 18;
-  border-color: $green;
-  border-width: 0 0 1 0;
-  border-style: dotted;
-}
-
-.images-flex{
-  min-height: 50px;
-
-  width: 100%;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-
-
-    Image{
-      width: 30%;
-      height: auto;
-    }
-
-
+.buttons{
+  Button{
+    height: auto;
+  }
 }

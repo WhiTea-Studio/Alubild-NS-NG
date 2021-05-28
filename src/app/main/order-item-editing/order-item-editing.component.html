@@ -1,0 +1,248 @@
+<FlexBoxLayout class="m-b-20 m-t-20">
+  <StackLayout class="form" [formGroup]="orderItemForm">
+
+    <!-- Kategorije -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80">
+      <Label text="Odaberite kategoriju: "
+        [ngClass]="{exception: orderItemForm.get('category').touched && orderItemForm.get('category').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20">
+      <ListPicker [items]="categories" class="input -rounded m-t-0" formControlName="category" textField="name"
+        (selectedIndexChange)="onSelectedCategoryChanged($event)"></ListPicker>
+      <Label class="exception err" *ngIf="orderItemForm.get('category').touched && orderItemForm.get('category').errors"
+        text="Morate odabrati kategoriju."></Label>
+    </StackLayout> -->
+    <!-- Kategorije -->
+
+    <!-- Tipologije -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80">
+      <Label text="Tipologija: "></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20">
+      <TextField class="input -rounded m-t-0" formControlName="typology" editable="false"></TextField>
+    </StackLayout> -->
+    <!-- Tipologije -->
+
+
+    <!-- Model tipologije -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80" *ngIf="typologyModels && validTypologyCategory">
+      <Label text="Odaberite model: "
+        [ngClass]="{exception: orderItemForm.get('typologyModel').touched && orderItemForm.get('typologyModel').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="typologyModels && validTypologyCategory">
+      <ListPicker [items]="typologyModels" class="input -rounded m-t-0" formControlName="typologyModel" textField="name"
+        valueField="id"></ListPicker>
+      <Label class="exception err"
+        *ngIf="orderItemForm.get('typologyModel').touched && orderItemForm.get('typologyModel').errors"
+        text="Morate odabrati model."></Label>
+    </StackLayout> -->
+    <!-- Model tipologije -->
+
+    <!-- Strana tipologije -->
+    <!-- <FlexboxLayout class="input-field m-b-20 side-checker" *ngIf="typologyModels && validTypologyCategory">
+      <CheckBox text="L" fillColor="#48a648" color="#767676" class="input -rounded m-t-0" #CB1
+        (ngModelChange)="checkBoxChange()" formControlName="left"></CheckBox>
+      <CheckBox text="D" fillColor="#48a648" color="#767676" class="input -rounded m-t-0" #CB2
+        (ngModelChange)="checkBoxChange()" formControlName="right"></CheckBox>
+    </FlexboxLayout>
+    <Label class="exception err m-b-20" *ngIf="checkerError" text="Morate odabrati stranu."></Label> -->
+    <!-- Strana tipologije -->
+
+    <!-- Dimenzije -->
+    <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory">
+      <Label text="Dimenzije: " [ngClass]="{exception: (orderItemForm.get('width').touched && orderItemForm.get('width').errors)
+        || (orderItemForm.get('height').touched && orderItemForm.get('height').errors)}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20 m-t-20" *ngIf="validTypologyCategory">
+      <FlexboxLayout class="dimenzije m-t-20 m-b-20">
+        <TextField hint="Širina" class="input -rounded m-t-0" formControlName="width" keyboardType="integer"
+          returnKeyType="next"></TextField>
+        <Label text=" x "></Label>
+        <TextField hint="Visina" class="input -rounded m-t-0" formControlName="height" keyboardType="integer"
+          returnKeyType="next"></TextField>
+        <Label text="mm"></Label>
+      </FlexboxLayout>
+      <Label class="exception err" *ngIf="(orderItemForm.get('width').touched && orderItemForm.get('width').errors)
+            || (orderItemForm.get('height').touched && orderItemForm.get('height').errors)"
+        text="Morate uneti dimenzije."></Label>
+    </StackLayout>
+    <!-- Dimenzije -->
+
+
+    <!-- Kolicina -->
+    <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory">
+      <Label text="Količina: "
+        [ngClass]="{exception: orderItemForm.get('quantity').touched && orderItemForm.get('quantity').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20 m-t-20" *ngIf="validTypologyCategory">
+      <TextField hint="Količina" class="input -rounded m-t-0" formControlName="quantity" keyboardType="integer"
+        returnKeyType="next"></TextField>
+      <Label class="exception err" *ngIf="orderItemForm.get('quantity').touched && orderItemForm.get('quantity').errors"
+        text="Morate uneti količinu."></Label>
+    </StackLayout>
+    <!-- Kolicina -->
+
+
+    <!-- Boja -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80" *ngIf="validTypologyCategory">
+      <Label text="Odaberite boju: "
+        [ngClass]="{exception: orderItemForm.get('color').touched && orderItemForm.get('color').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field" [ngClass]="{'m-b-20': !showColorString}" *ngIf="validTypologyCategory">
+      <ListPicker [items]="colors" class="input -rounded m-t-0" formControlName="color" textField="name"
+        (selectedIndexChange)="onSelectedColorChanged($event)">
+      </ListPicker>
+      <Label class="exception err" *ngIf="orderItemForm.get('color').touched && orderItemForm.get('color').errors"
+        text="Morate odabrati boju"></Label>
+    </StackLayout> -->
+    <!-- Boja -->
+
+
+    <!-- Boja string -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80" *ngIf="validTypologyCategory && showColorString">
+      <Label text="Dodajte boju: "
+        [ngClass]="{exception: orderItemForm.get('colorString').touched && orderItemForm.hasError('colorStringError')}"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="showColorString">
+      <TextField hint="Unesite svoju boju" class="input -rounded m-t-0 m-b-20" formControlName="colorString"
+        returnKeyType="next"></TextField>
+      <Label class="exception" *ngIf="orderItemForm.get('colorString').touched && orderItemForm.hasError('colorStringError')"
+        text="Morate uneti svoju boju."></Label>
+    </StackLayout> -->
+    <!-- Boja string -->
+
+    <!-- Kvalitet -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory">
+      <Label text="Odaberite kvalitet: "
+        [ngClass]="{exception: orderItemForm.get('quality').touched && orderItemForm.get('quality').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="validTypologyCategory">
+      <ListPicker [items]="qualities" class="input -rounded m-t-0" formControlName="quality" textField="name">
+      </ListPicker>
+      <Label class="exception err" *ngIf="orderItemForm.get('quality').touched && orderItemForm.get('quality').errors"
+        text="Morate odabrati kvalitet"></Label>
+    </StackLayout> -->
+    <!-- Kvalitet -->
+
+
+    <!-- Vođica -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="guides && validTypologyCategory">
+      <Label text="Odaberite vođicu: "
+        [ngClass]="{exception: orderItemForm.get('guide').touched && orderItemForm.get('guide').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="guides && validTypologyCategory">
+      <ListPicker [items]="guides" class="input -rounded m-t-0" formControlName="guide" textField="name"
+        valueField="id"></ListPicker>
+      <Label class="exception err" *ngIf="orderItemForm.get('guide').touched && orderItemForm.get('guide').errors"
+        text="Morate odabrati vođicu."></Label>
+    </StackLayout> -->
+    <!-- Vođica -->
+
+    <!-- Tabakera -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80" *ngIf="tabakere && validTypologyCategory">
+      <Label text="Odaberite tabakeru: "
+        [ngClass]="{exception: orderItemForm.get('tabakera').touched && orderItemForm.get('tabakera').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="tabakere && validTypologyCategory">
+      <ListPicker [items]="tabakere" class="input -rounded m-t-0" formControlName="tabakera" textField="name"
+        valueField="id"></ListPicker>
+      <Label class="exception err" *ngIf="orderItemForm.get('tabakera').touched && orderItemForm.get('tabakera').errors"
+        text="Morate odabrati tabakeru."></Label>
+    </StackLayout> -->
+    <!-- Tabakera -->
+
+    <!-- Proizvodjac -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory">
+      <Label text="Odaberite proizvođača: "
+        [ngClass]="{exception: orderItemForm.get('manufacturer').touched && orderItemForm.get('manufacturer').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="validTypologyCategory">
+      <ListPicker [items]="manufacturers" class="input -rounded m-t-0" formControlName="manufacturer" textField="name"
+        (selectedIndexChange)="onSelectedManufacturerChanged($event)">
+      </ListPicker>
+      <Label class="exception err"
+        *ngIf="orderItemForm.get('manufacturer').touched && orderItemForm.get('manufacturer').errors"
+        text="Morate odabrati proizvođača"></Label>
+    </StackLayout> -->
+    <!-- Proizvodjac -->
+
+
+    <!-- Serija -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory">
+      <Label text="Odaberite seriju: "
+        [ngClass]="{exception: orderItemForm.get('series').touched && orderItemForm.get('series').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="validTypologyCategory">
+      <ListPicker [items]="series" class="input -rounded m-t-0" formControlName="series" textField="name">
+      </ListPicker>
+      <Label class="exception err" *ngIf="orderItemForm.get('series').touched && orderItemForm.get('series').errors"
+        text="Morate odabrati seriju"></Label>
+    </StackLayout> -->
+    <!-- Serija -->
+
+    <!-- Staklo paket -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory && glassPackages">
+      <Label text="Staklo paket: "
+        [ngClass]="{exception: orderItemForm.get('glassPackage').touched && orderItemForm.get('glassPackage').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="validTypologyCategory && glassPackages">
+      <ListPicker [items]="glassPackages" class="input -rounded m-t-0" formControlName="glassPackage" textField="name">
+      </ListPicker>
+      <Label class="exception err"
+        *ngIf="orderItemForm.get('glassPackage').touched && orderItemForm.get('glassPackage').errors"
+        text="Morate odabrati staklo paket"></Label>
+    </StackLayout> -->
+    <!-- Staklo paket -->
+
+
+    <!-- Staklo paket -->
+    <!-- <FlexboxLayout class="label-required mx-auto w-80 m-t-20" *ngIf="validTypologyCategory && glassQualities">
+      <Label text="Kvalitet stakla: "
+        [ngClass]="{exception: orderItemForm.get('glassQuality').touched && orderItemForm.get('glassQuality').errors}"></Label>
+      <Label text="*" class="exception"></Label>
+    </FlexboxLayout>
+    <StackLayout class="input-field m-b-20" *ngIf="validTypologyCategory && glassQualities">
+      <ListPicker [items]="glassQualities" class="input -rounded m-t-0" formControlName="glassQuality" textField="name">
+      </ListPicker>
+      <Label class="exception err"
+        *ngIf="orderItemForm.get('glassQuality').touched && orderItemForm.get('glassQuality').errors"
+        text="Morate odabrati kvalitet stakla"></Label>
+    </StackLayout> -->
+    <!-- Staklo paket -->
+
+
+
+    <!-- Napomena -->
+    <Label text="Dodatna napomena: " class="mx-auto w-80 m-t-20 m-b-5"
+      [ngClass]="{exception: orderItemForm.get('note').touched && orderItemForm.get('note').errors}"
+      *ngIf="validTypologyCategory && glassQualities"></Label>
+    <StackLayout class="input-field m-b-20">
+      <TextView hint="Unesite dodatnu napomenu za ovu stavku" class="input -rounded m-t-0 napomena"
+        formControlName="note" returnKeyType="done"></TextView>
+    </StackLayout>
+    <!-- Napomena -->
+
+
+
+
+
+    <!-- Dugmad -->
+    <FlexboxLayout class="buttons m-t-20">
+      <Button class="btn -outline-primary -rounded-lg" text="Odustani" (tap)="closeItemWindow()"></Button>
+      <Button class="btn -primary -rounded-lg" text="Izmeni stavku" (tap)="editOrderItem()"></Button>
+    </FlexboxLayout>
+    <!-- Dugmad -->
+
+  </StackLayout>
+</FlexBoxLayout>

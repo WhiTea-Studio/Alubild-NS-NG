@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "@nativescript/angular";
+import { User } from "../_models/user";
 import { AuthService } from "../_services/auth.service";
 
 import { Item } from "./item";
@@ -11,11 +13,14 @@ import { ItemService } from "./item.service";
     styleUrls: ['./item-detail.component.scss']
 })
 export class ItemDetailComponent implements OnInit {
-    item: Item;
+    user: User;
 
-    constructor(private itemService: ItemService, private authService: AuthService, private router: RouterExtensions) { }
+    constructor(private route: ActivatedRoute, private router: RouterExtensions, private authService: AuthService) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.route.data.subscribe( data => {
+        this.user = data['user'];
+      });}
 
     Logout(){
         this.authService.logout();

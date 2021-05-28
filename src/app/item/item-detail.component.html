@@ -4,13 +4,13 @@
 </ns-action-bar>
 <FlexboxLayout class="page">
     <StackLayout  class="form">
-        <Label text="Ime: Teodora"></Label>
+        <Label [text]='"Ime: " + user?.name '></Label>
         <Label class="h-line-separator"></Label>
-        <Label text="Prezime: Acimov" class="m-t-20"></Label>
+        <Label [text]='"Prezime: " + user?.surname ' class="m-t-20"></Label>
         <Label class="h-line-separator"></Label>
-        <Label text="Email: teodora.acimov@gmail.com" class="m-t-20"></Label>
+        <Label [text]='"Email: " + user?.email' class="m-t-20"></Label>
         <Label class="h-line-separator"></Label>
-        <Label text="Kontakt telefon: 0631524415" class="m-t-20"></Label>
+        <Label [text]='"Kontakt telefon: " + user?.phoneNumber' class="m-t-20"></Label>
         <Label class="h-line-separator"></Label>
     </StackLayout>
     <FlexboxLayout class="page">

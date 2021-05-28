@@ -83,6 +83,12 @@
         </ScrollView>
         </StackLayout>
 
+        <FlexboxLayout>
+          <FlexboxLayout class="images-flex">
+              <Image *ngFor="let image of order?.orderPhotos" [src]="image.url" stretch="aspectFit" top="20" left="10"></Image>
+        </FlexboxLayout>
+        </FlexboxLayout>
+
       <!-- Dugmad -->
     <FlexboxLayout class="buttons m-b-20 " alignItems="center" justifyContent = "center">
       <Button class="btn -primary -rounded-lg" text="Nazad na listu" (tap)="back()"></Button>

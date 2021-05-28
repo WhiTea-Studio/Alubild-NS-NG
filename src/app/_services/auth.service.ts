@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../_models/user';
 import {catchError, tap} from 'rxjs/operators';
-import { BehaviorSubject, of, throwError } from 'rxjs';
+import { BehaviorSubject, of, throwError,Observable } from 'rxjs';
 // import { JwtHelperService } from '@auth0/angular-jwt';
 import { getString, hasKey, setString, remove } from '@nativescript/core/application-settings';
 import { RouterExtensions } from '@nativescript/angular';
@@ -24,6 +24,10 @@ export class AuthService {
 
     get user(){
         return this._user.asObservable();
+    }
+
+    get(): Observable<User>{
+        return this.http.get<User>(this.baseUrl + JSON.parse(getString('user')).id);
     }
 
     register(userReg: User){

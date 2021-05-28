@@ -106,8 +106,8 @@
                   </StackLayout>
                 </StackLayout>
                 <FlexboxLayout alignItems="center" class="items-buttons">
-                  <Label (tap)="console.log('edited')" text='&#xf044;' class="icon"></Label>
-                  <Label (tap)="deleteItem(item)" text='&#xf1f8;' class="icon"></Label>
+                  <Label (tap)="editItem(item)" text='&#xf044;' class="icon fa"></Label>
+                  <Label (tap)="deleteItem(item)" text='&#xf1f8;' class="icon fa"></Label>
                 </FlexboxLayout>
               </FlexboxLayout>
             </ng-template>
@@ -115,14 +115,12 @@
         </ScrollView>
         </StackLayout>
 
-
-
-
-<!--
       <Button text="&#xf055; Dodaj tipologiju" class="btn -secondary -rounded-lg fa m-t-20  btn-typology"
         (tap)="addTypologyTap()" *ngIf="!isTapped && !isService"></Button>
       <ns-order-item-creating *ngIf="isTapped && !isService" class="m-y-20" (closeItem)="closeAddOrderItem($event)">
-      </ns-order-item-creating> -->
+      </ns-order-item-creating>
+      <ns-order-item-editing *ngIf="toEdit && !isService" class="m-y-20" [inputItem]="itemToEdit" (closeItem)="closeEditOrderItem($event)">
+      </ns-order-item-editing>
 
 
 
