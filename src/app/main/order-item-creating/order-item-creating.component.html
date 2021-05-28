@@ -239,7 +239,8 @@
 
     <!-- Napomena -->
     <Label text="Dodatna napomena: " class="mx-auto w-80 m-t-20 m-b-5"
-      [ngClass]="{exception: orderItemForm.get('note').touched && orderItemForm.get('note').errors}"></Label>
+      [ngClass]="{exception: orderItemForm.get('note').touched && orderItemForm.get('note').errors}"
+      *ngIf="validTypologyCategory && glassQualities"></Label>
     <StackLayout class="input-field m-b-20">
       <TextView hint="Unesite dodatnu napomenu za ovu stavku" class="input -rounded m-t-0 napomena"
         formControlName="note" returnKeyType="done"></TextView>

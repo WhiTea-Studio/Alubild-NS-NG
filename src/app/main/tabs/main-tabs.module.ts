@@ -31,7 +31,7 @@ import {AddOrdersPhotosComponent} from '../add-orders-photos/add-orders-photos.c
 import { NativeScriptUIListViewModule} from 'nativescript-ui-listview/angular';
 import {EditOrderComponent} from '../edit-order/edit-order.component';
 import {ViewOrderComponent} from '../view-order/view-order.component';
-
+import {OrderPhotoService} from '../_services/order-photo.service';
 
 @NgModule({
     declarations: [
@@ -70,7 +70,8 @@ import {ViewOrderComponent} from '../view-order/view-order.component';
         OrderService,
         CalendarStyleService,
         OrdersResolver,
-        OrderResolver
+        OrderResolver,
+        OrderPhotoService
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

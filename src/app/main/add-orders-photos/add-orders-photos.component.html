@@ -2,31 +2,45 @@
 </ns-action-bar>
 
 <ScrollView>
-  <GridLayout rows="auto, *, auto, auto">
-      <StackLayout row="0" orientation="vertical" padding="10">
-          <StackLayout orientation="horizontal" padding="10">
-              <Label text="saveToGallery"></Label>
-              <Switch [(ngModel)]="saveToGallery"></Switch>
-          </StackLayout>
-          <StackLayout android:visibility="collapsed" orientation="horizontal" padding="10">
-              <Label text="allowsEditing"></Label>
-              <Switch [(ngModel)]="allowsEditing"></Switch>
-          </StackLayout>
-          <StackLayout orientation="horizontal" padding="10">
-              <Label text="keepAspectRatio"></Label>
-              <Switch [(ngModel)]="keepAspectRatio"></Switch>
-          </StackLayout>
-          <StackLayout orientation="horizontal" padding="10">
-              <Label text="width: "></Label>
-              <TextField hint="Enter width" keyboardType="number" [(ngModel)]="width" class="input"></TextField>
-              <Label text="height: "></Label>
-              <TextField hint="Enter height" keyboardType="number" [(ngModel)]="height" class="input"></TextField>
-          </StackLayout>
-      </StackLayout>
 
-      <Image row="1" [src]="cameraImage" stretch="aspectFit" margin="10"></Image>
-      <TextView row="2" [(ngModel)]="labelText" editable="false"></TextView>>
-      <Button row="3" text="Take Picture" (tap)='onTakePictureTap($event)' padding="10"></Button>
-  </GridLayout>
+  <FlexboxLayout class="page p-t-30">
+    <StackLayout class="classic-stack m-b-20 ">
+        <Label class="h2 -primary" text="Priložite fotografije uz nalog"></Label>
+    </StackLayout>
+    <!-- <StackLayout class="classic-stack m-b-20">
+        <StackLayout orientation="horizontal" padding="10">
+            <Label text="Sačuvajte u svoju galeriju"></Label>
+            <Switch [(ngModel)]="saveToGallery"></Switch>
+        </StackLayout>
+    </StackLayout> -->
+      
+    <FlexboxLayout class="images-flex">
+        <AbsoluteLayout *ngFor="let image of cameraImages" class="abs-image">
+          <Image [src]="image" stretch="aspectFit" top="20" left="10"></Image>
+          <Button class="btn -error btn-delete" text="X" top="-20" right="-10" (tap)="deleteImage(image)"></Button>
+        </AbsoluteLayout>
+    </FlexboxLayout>
 
+    
+    <Button  class="btn -secondary -rounded-lg fa m-t-20  btn-typology" text="Kamera &#xf030;" (tap)='onTakePictureTap($event)' padding="10"></Button>
+      
+      <!-- Dugmad -->
+    <FlexboxLayout class="buttons m-t-20 mb20">
+      <Button class="btn -outline-primary -rounded-lg" text="Preskoči" (tap)="next()"></Button>
+      <Button class="btn -primary -rounded-lg" text="Dodaj fotografije" (tap)="savePhotos()" [isEnabled]="cameraImages != null && cameraImages != undefined && cameraImages.length > 0"></Button>
+    </FlexboxLayout>
+    <!-- Dugmad -->
+    <ActivityIndicator [busy]="uploadingImages"></ActivityIndicator>
+
+    <!-- <ListView colSpan="3" [items]="tasks">
+      <ng-template let-item="item">
+          <StackLayout>
+              <Label [text]="item.description"></Label>
+              <Progress [value]="item.upload" [maxValue]="item.totalUpload"></Progress>
+              <Label [text]="'Uploading: ' + item.upload + ' / ' + item.totalUpload"></Label>
+              <Label [text]="'Status: ' + item.status"></Label>
+          </StackLayout>
+      </ng-template>
+  </ListView> -->
+  </FlexboxLayout>
 </ScrollView>

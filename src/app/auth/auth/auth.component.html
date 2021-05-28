@@ -36,9 +36,9 @@
             (tap)="onSubmit()"
             [isEnabled]="form.valid"
             ></Button>
-    <Label  text="Zaboravili ste lozinku?" class="muted" *ngIf="!isLoading"
+    <!-- <Label  text="Zaboravili ste lozinku?" class="muted" *ngIf="!isLoading"
             (tap)="passwordForgotten()"
-            textDecoration="underline"></Label>
+            textDecoration="underline"></Label> -->
 
             <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
   </StackLayout>
