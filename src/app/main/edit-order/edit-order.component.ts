@@ -59,6 +59,7 @@ export class EditOrderComponent implements OnInit {
             orderItems: this.fb.array(this.order.orderItems),
         }, {validators: [this.validateSubjectsArrayNotService]});
         this.orderItemList = this.order.orderItems;
+        this.isService = this.order.service;
     }
 
     validateSubjectsArray(arr: FormArray) {
@@ -151,8 +152,13 @@ export class EditOrderComponent implements OnInit {
     editOrder(){
         if(this.orderForm.valid){
             this.editedOrder = Object.assign({}, this.orderForm.value);
-            if(this.isService)
-                this.editedOrder.orderItems = null;
+            if(this.isService){
+                this.order.orderItems.forEach(item => {
+                    item.delete = true;
+                    this.helpItemsList.push(item);
+                });
+                this.editedOrder.orderItems = [];
+            }
 
             this.editedOrder.orderItems = this.orderItemList;
             this.editedOrder.dateCreated = this.order.dateCreated;
@@ -174,6 +180,7 @@ export class EditOrderComponent implements OnInit {
             this.helpItemsList.forEach(item => {
                 this.editedOrder.orderItems.push(item);
             });
+            this.editedOrder.schedulingDate = new Date(this.editedOrder.schedulingDate);
             console.log(this.editedOrder);
             this.orderService.edit(this.editedOrder).subscribe((result: Order) => {
                 alert("Uspesno izmenjen nalog!");

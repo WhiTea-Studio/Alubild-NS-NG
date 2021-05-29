@@ -139,6 +139,6 @@ export class OrderCreatingComponent implements OnInit {
     }
 
     back(){
-        this.router.navigate(['/main/tabs/']);
+        this.router.navigate(['/main/tabs']);
     }
 }
