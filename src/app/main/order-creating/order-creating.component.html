@@ -88,7 +88,7 @@
         </DatePicker>
       </StackLayout>
 
-      
+
 
       <StackLayout class="order-item-list" *ngIf="!isService && showOrderItemList()">
           <ScrollView *ngIf="!isService && showOrderItemList()" height="300">
@@ -130,7 +130,7 @@
 
       <!-- Dugmad -->
     <FlexboxLayout class="buttons m-t-20 mb20">
-      <Button class="btn -outline-primary -rounded-lg" text="Odustani" (tap)="refresh()"></Button>
+      <Button class="btn -outline-primary -rounded-lg" text="Odustani" (tap)="back()"></Button>
       <Button class="btn -primary -rounded-lg" text="Kreiraj nalog" (tap)="createOrder()" [isEnabled]="orderForm.valid"></Button>
     </FlexboxLayout>
     <!-- Dugmad -->

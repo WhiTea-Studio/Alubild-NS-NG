@@ -5,6 +5,7 @@ import { Order } from '../../_models/order';
 import { OrderService } from '../../_services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getString, setString } from '@nativescript/core/application-settings';
+import { OrderItemHelpService } from '../_services/order-item-help.service';
 
 @Component({
   selector: 'app-edit-order',
@@ -20,12 +21,13 @@ export class EditOrderComponent implements OnInit {
     isTapped = false;
     isService = false;
     orderItemList: OrderItem[] = [];
+    helpItemsList: OrderItem[] = [];
     minDate = new Date();
     toEdit = false;
     itemToEdit: OrderItem;
 
     constructor(private fb: FormBuilder, private orderService: OrderService,private route: ActivatedRoute,
-        private router: Router) {}
+        private router: Router, private helpService: OrderItemHelpService) {}
 
     ngOnInit() {
         this.route.data.subscribe( data => {
@@ -92,28 +94,44 @@ export class EditOrderComponent implements OnInit {
         }
     }
 
-    //NE ODRADI IZMENU OVDE
     closeEditOrderItem(orderItem?: OrderItem) {
-        console.log(">>>>>>>>" +orderItem);
+        console.log(orderItem);
+
         this.toEdit = false;
-        if (orderItem !== null && orderItem !== undefined) {
-            if(orderItem.update === false) return;
-            this.orderItemList.forEach(item => {
-                if(item.id === orderItem.id){
-                    alert("Zamenio");
-                    item.note = orderItem.note;
-                    item.height = orderItem.height;
-                    item.width = orderItem.width;
-                    item.quantity = orderItem.quantity;
-                    item.update = true;
-                    return;
-                }
-            });
+        if (orderItem != null && orderItem != undefined) {
+            if(orderItem.update === false){
+                alert("Nije selektovan update");
+                return;
+            }
+
+            const i = this.orderItemList.findIndex(x => x.id == orderItem.id);
+            this.orderItemList[i].note = orderItem.note;
+            this.orderItemList[i].height = orderItem.height;
+            this.orderItemList[i].width = orderItem.width;
+            this.orderItemList[i].quantity = orderItem.quantity;
+            this.orderItemList[i].update = true;
+
+            (<FormArray>this.orderForm.controls.orderItems).setValue(this.orderItemList);
+            alert("Zamenio");
+            // this.orderItemList.forEach(item => {
+            //     if(item.id == orderItem.id){
+            //         alert("Zamenio");
+            //         item.note = orderItem.note;
+            //         item.height = orderItem.height;
+            //         item.width = orderItem.width;
+            //         item.quantity = orderItem.quantity;
+            //         item.update = true;
+            //         return;
+            //     }
+            // });
         }
+        else {alert("Nije usao u if")};
     }
 
     deleteItem(item: OrderItem){
         this.orderItemList = this.orderItemList.filter(x => x !== item);
+        item.delete = true;
+        this.helpItemsList.push(item);
     }
 
     showOrderItemList(){
@@ -138,6 +156,7 @@ export class EditOrderComponent implements OnInit {
 
             this.editedOrder.orderItems = this.orderItemList;
             this.editedOrder.dateCreated = this.order.dateCreated;
+            this.editedOrder.id = this.order.id;
             const userData = JSON.parse(getString('user'));
 
             this.editedOrder.userId = userData.id;
@@ -152,12 +171,16 @@ export class EditOrderComponent implements OnInit {
                 return;
             }
 
-        //     this.orderService.edit(this.order).subscribe((result: Order) => {
-        //         setString("order", JSON.stringify(result));
-        //     }, (error) => {
-        //         alert(error.message);
-        //     });
-        // this.router.navigate(['/main/tabs']);
+            this.helpItemsList.forEach(item => {
+                this.editedOrder.orderItems.push(item);
+            });
+            console.log(this.editedOrder);
+            this.orderService.edit(this.editedOrder).subscribe((result: Order) => {
+                alert("Uspesno izmenjen nalog!");
+            }, (error) => {
+                alert(error.message);
+            });
+        this.router.navigate(['/main/tabs']);
         }
     }
 
@@ -179,10 +202,10 @@ export class EditOrderComponent implements OnInit {
         return false;
     }
 
-    editItem(item: any){
+    editItem(item: OrderItem){
         this.toEdit = true;
-        this.order
-        this.itemToEdit = item;
+        // this.itemToEdit = this.orderItemList.filter(x => x.id == item.id)[0];
+        this.helpService.setOrderItem(this.orderItemList.filter(x => x.id == item.id)[0]);
     }
 
 }

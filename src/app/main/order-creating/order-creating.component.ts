@@ -123,7 +123,7 @@ export class OrderCreatingComponent implements OnInit {
             this.newOrder = Object.assign({}, this.orderForm.value);
             if(this.isService)
                 this.newOrder.orderItems = null;
-            
+
             this.newOrder.orderItems = this.orderItemList;
             this.newOrder.dateCreated = new Date();
             const userData = JSON.parse(getString('user'));
@@ -136,5 +136,9 @@ export class OrderCreatingComponent implements OnInit {
                 alert(error.message);
             });
         }
+    }
+
+    back(){
+        this.router.navigate(['/main/tabs/']);
     }
 }

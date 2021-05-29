@@ -91,12 +91,12 @@
 
 
       <StackLayout class="order-item-list" *ngIf="!isService && showOrderItemList()">
-          <ScrollView *ngIf="!isService && showOrderItemList()" height="300">
-          <ListView [items]="orderItemList" separatorColor="green" height="300"
+          <ScrollView *ngIf="!isService && showOrderItemList()" height="400">
+          <ListView [items]="orderItemList" separatorColor="green" height="400"
             *ngIf="!isService && showOrderItemList()">
-            <ng-template let-item="item" let-i="index">
-              <FlexboxLayout justifyContent="space-between" class="rad-list-flex">
-                <StackLayout orientation="horizontal">
+            <ng-template let-item="item" let-i="index" >
+              <FlexboxLayout justifyContent="space-between" class="rad-list-flex"  >
+                <StackLayout orientation="horizontal" >
                   <Image src="{{item?.typologyModel?.photoUrl}}" class="list-image"></Image>
                   <StackLayout orientation="vertical">
                     <Label class="pull-right order-item-text" [text]="item.typologyModel.name"></Label>
@@ -106,7 +106,7 @@
                   </StackLayout>
                 </StackLayout>
                 <FlexboxLayout alignItems="center" class="items-buttons">
-                  <Label (tap)="editItem(item)" text='&#xf044;' class="icon fa"></Label>
+                  <!-- <Label (tap)="editItem(item)" text='&#xf044;' class="icon fa"></Label> -->
                   <Label (tap)="deleteItem(item)" text='&#xf1f8;' class="icon fa"></Label>
                 </FlexboxLayout>
               </FlexboxLayout>
@@ -116,11 +116,12 @@
         </StackLayout>
 
       <Button text="&#xf055; Dodaj tipologiju" class="btn -secondary -rounded-lg fa m-t-20  btn-typology"
-        (tap)="addTypologyTap()" *ngIf="!isTapped && !isService"></Button>
+        (tap)="addTypologyTap()" *ngIf="!isTapped && !isService  && !toEdit"></Button>
       <ns-order-item-creating *ngIf="isTapped && !isService" class="m-y-20" (closeItem)="closeAddOrderItem($event)">
       </ns-order-item-creating>
-      <ns-order-item-editing *ngIf="toEdit && !isService" class="m-y-20" [inputItem]="itemToEdit" (closeItem)="closeEditOrderItem($event)">
-      </ns-order-item-editing>
+      <!-- <ns-order-item-editing *ngIf="toEdit && !isService" class="m-y-20" [inputItem]="itemToEdit" (closeItem2)="closeEditOrderItem($event)"> -->
+        <!-- <ns-order-item-editing *ngIf="toEdit && !isService" class="m-y-20" (closeItem2)="closeEditOrderItem($event)">
+      </ns-order-item-editing> -->
 
 
 
